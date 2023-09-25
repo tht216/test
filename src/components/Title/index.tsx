@@ -27,10 +27,10 @@ const Title: React.FC<ITitleProps> = ({
   } as const;
 
   const COLOR_MAPPING = {
-    "zinc-800": "text-zinc-800",
-    "zinc-700": "text-zinc-700",
-    blue: "text-blue-500",
-    white: "text-white",
+    "zinc-800": "text-zinc-800 font-bold",
+    "zinc-700": "text-zinc-700 font-bold",
+    blue: "text-blue-500 font-bold",
+    white: "text-white font-bold",
   } as const;
 
   const ALIGN_MAPPING = {
