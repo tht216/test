@@ -1,0 +1,3 @@
+next.config.js
+tailwind.config.js (IF YOU USE TAILWINDCSS)
+postcss.config.js (IF YOU USE TAILWINDCSS)
