@@ -11,6 +11,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@ladle/react": "^3.0.0",
     "autoprefixer": "10.4.16",
     "next": "13.5.2",
     "postcss": "8.4.30",
@@ -34,7 +35,6 @@
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-prettier": "^5.0.0",
     "husky": "^8.0.0",
-    "ladle": "^0.0.0",
     "lint-staged": "^14.0.1",
     "prettier": "^3.0.3",
     "react-redux": "^8.1.2",
