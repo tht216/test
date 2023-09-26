@@ -6,7 +6,6 @@ import { usePathname } from "next/navigation";
 import { ROUTES } from "@src/constants/common";
 import { Button } from "@src/components";
 import { useState } from "react";
-import { useRouter } from "next/router";
 
 interface Props {
   className?: string;
@@ -26,11 +25,6 @@ const NavBar: React.FC<Props> = ({ className }) => {
       setTimeout(() => setIsOpened((menuStatus) => !menuStatus), 100);
     }
   };
-  const router = useRouter();
-  const handleClick = ()=>{
-    router.push("/");
-  };
-
 
   return (
     <header className={cn(className, "w-full")}>
@@ -71,7 +65,7 @@ const NavBar: React.FC<Props> = ({ className }) => {
               </Link>
             </li>
             <li>
-              <Button href="/trial" size="sm" color="white" onClick={handleClick}>
+              <Button href="/trial" size="sm" color="white">
                 Dùng thử
               </Button>
             </li>
