@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { ROUTES } from "@src/constants/common";
 import { Button } from "@src/components";
 import { useState } from "react";
+import { useRouter } from "next/router";
 
 interface Props {
   className?: string;
@@ -15,6 +16,10 @@ const NavBar: React.FC<Props> = ({ className }) => {
   const pathname = usePathname();
   const [isOpened, setIsOpened] = useState<boolean>(false);
   const [isVisible, setIsVisible] = useState<boolean>(false);
+  const router = useRouter();
+  const handleNavigator = () => {
+    router.push("/");
+  };
 
   const toggleMenu = () => {
     if (isOpened) {
@@ -65,7 +70,7 @@ const NavBar: React.FC<Props> = ({ className }) => {
               </Link>
             </li>
             <li>
-              <Button size="sm" color="white">
+              <Button size="sm" color="white" onClick={handleNavigator}>
                 Dùng thử
               </Button>
             </li>
