@@ -17,6 +17,7 @@ const NavBar: React.FC<Props> = ({ className }) => {
   const [isOpened, setIsOpened] = useState<boolean>(false);
   const [isVisible, setIsVisible] = useState<boolean>(false);
   const router = useRouter();
+  
   const handleNavigator = () => {
     router.push("/");
   };
