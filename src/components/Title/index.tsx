@@ -1,7 +1,7 @@
 import * as React from "react";
 import cn from "classnames";
 
-type ITitleColor = "zinc-800" | "zinc-700" | "blue" | "white";
+type ITitleColor = "zinc-800" | "zinc-700" | "blue" | "white" | "stone-950";
 type ITitleSize = "5xl" | "4xl" | "lg";
 type ITitleAlign = "center" | "left";
 
@@ -31,6 +31,7 @@ const Title: React.FC<ITitleProps> = ({
     "zinc-700": "text-zinc-700 font-bold",
     blue: "text-blue-500 font-bold",
     white: "text-white font-bold",
+    "stone-950": "text-stone-950",
   } as const;
 
   const ALIGN_MAPPING = {
