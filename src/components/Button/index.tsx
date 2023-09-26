@@ -1,6 +1,5 @@
 import * as React from "react";
 import cn from "classnames";
-import Link from "next/link";
 
 type IButtonColor = "blue" | "white" | "gray";
 type IButtonSize = "xs" | "sm" | "lg";
@@ -10,7 +9,6 @@ export interface IButtonProps {
   color?: IButtonColor;
   size?: IButtonSize;
   className?: string;
-  href: string;
   disable?: boolean;
   onClick?: () => void;
 }
@@ -20,7 +18,6 @@ const Button: React.FC<IButtonProps> = ({
   color = "blue",
   size = "lg",
   className = "",
-  href = "",
   disable = false,
   onClick,
 }) => {
@@ -53,35 +50,31 @@ const Button: React.FC<IButtonProps> = ({
         COLOR_MAPPING[color]
       )}
     >
-      <Link
+      <button
         className={cn(
-          disable
-            ? "bg-gradient-blue-white cursor-default pointer-events-none"
-            : "",
+          disable ? "bg-gradient-blue-white" : "",
           BORDER_GRADIENT_MAPPING[size],
           "bg-white w-full h-full items-center justify-center flex"
         )}
         onClick={onClick}
-        href={href}
+        disabled={disable}
       >
         {children}
-      </Link>
+      </button>
     </div>
   ) : (
-    <Link
+    <button
       className={cn(
         className,
-        disable
-          ? "bg-gradient-blue-white cursor-default pointer-events-none"
-          : "",
+        disable ? "bg-gradient-blue-white" : "",
         COLOR_MAPPING[color],
         SIZE_MAPPING[size]
       )}
-      href={href}
       onClick={onClick}
+      disabled={disable}
     >
       {children}
-    </Link>
+    </button>
   );
 };
 
