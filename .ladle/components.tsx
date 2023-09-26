@@ -2,7 +2,7 @@ import * as React from "react";
 import { createContext, useState } from "react";
 import type { FC, ReactNode } from "react";
 import type { GlobalProvider } from "@ladle/react";
-import "@src/app/globals.css";
+import "@src/styles/globals.css";
 
 interface IUiContext {
   bodyCanBeScrolled: boolean;
