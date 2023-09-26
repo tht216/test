@@ -65,7 +65,7 @@ const NavBar: React.FC<Props> = ({ className }) => {
               </Link>
             </li>
             <li>
-              <Button href="/trial" size="sm" color="white">
+              <Button size="sm" color="white">
                 Dùng thử
               </Button>
             </li>
@@ -150,7 +150,7 @@ const NavBar: React.FC<Props> = ({ className }) => {
                     >
                       Đăng nhập
                     </Link>
-                    <Button href="/trial" size="sm" color="white">
+                    <Button size="sm" color="white">
                       Dùng thử
                     </Button>
                   </div>
