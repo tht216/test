@@ -45,12 +45,11 @@ export const ButtonStory: Story<IButtonProps> = ({
   size,
   color,
   label,
-  href,
   disable,
 }) => {
   return (
     <div className="flex flex-col justify-center items-center w-full h-full">
-      <Button disable={disable} href={href} size={size} color={color}>
+      <Button disable={disable} size={size} color={color}>
         {label}
       </Button>
     </div>
