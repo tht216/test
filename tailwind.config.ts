@@ -43,6 +43,7 @@ const config: Config = {
           "linear-gradient(100deg, #009DF5 -14.88%, #3CC4FF 112.1%)",
         "gradient-blue-white":
           "linear-gradient(0deg, rgba(255, 255, 255, 0.50) 0%, rgba(255, 255, 255, 0.50) 100%), linear-gradient(95deg, #0199EE -3.33%, #5FCFFF 104.02%)",
+        pros: "url('/background/bg-pros.svg')",
       },
 
       width: {

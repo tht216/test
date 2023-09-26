@@ -21,9 +21,9 @@ const Title: React.FC<ITitleProps> = ({
   className = "",
 }) => {
   const SIZE_MAPPING = {
-    "5xl": "text-5xl",
-    "4xl": "text-4xl",
-    lg: "text-lg",
+    "5xl": "text-5xl leading-[3.9375rem]",
+    "4xl": "text-4xl leading-[2.5rem]",
+    lg: "text-lg leading-[2.5rem]",
   } as const;
 
   const COLOR_MAPPING = {
