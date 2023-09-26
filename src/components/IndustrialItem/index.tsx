@@ -22,7 +22,7 @@ const IndustrialItem: React.FC<Props> = ({
         alt={industrialItem.industrialDescription}
         className="mb-[1.82rem] h-[112.3px] w-auto"
       />
-      <h3 className="leading-[1.5rem] font-medium max-w-[10.625rem] text-lg leading-[2.5rem] text-stone-950 text-center">
+      <h3 className="leading-[1.5rem] font-medium max-w-[10.625rem] text-lg text-stone-950 text-center">
         {industrialItem.industrialDescription.split(" &").map((value, index) =>
           index === 0 ? (
             value
