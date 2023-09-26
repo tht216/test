@@ -6,14 +6,16 @@ import { usePathname } from "next/navigation";
 import { ROUTES } from "@src/constants/common";
 import { Button } from "@src/components";
 import { useState } from "react";
-type Props = {
+
+interface Props {
   className?: string;
-};
+}
 
 const NavBar: React.FC<Props> = ({ className }) => {
   const pathname = usePathname();
   const [isOpened, setIsOpened] = useState<boolean>(false);
   const [isVisible, setIsVisible] = useState<boolean>(false);
+
   const toggleMenu = () => {
     if (isOpened) {
       setIsOpened((menuStatus) => !menuStatus);
@@ -32,35 +34,42 @@ const NavBar: React.FC<Props> = ({ className }) => {
             <Link href="/" className="max-w-[7.625rem] object-contain">
               <Image src={logo} className="w-full" alt="logo Wifosell" />
             </Link>
-            <div className="hidden xl:flex gap-x-7">
+            <ul className="hidden xl:flex gap-x-7">
               {ROUTES.map((value) => (
-                <Link
-                  key={value.id}
-                  href={value.href}
-                  className={cn(
-                    pathname === value.href ? "text-blue-500" : "text-zinc-800",
-                    "text-lg font-bold leading-[1.125rem] tracking-tight hover:text-blue-500 transition-all duration-500"
-                  )}
-                >
-                  {value.routeName}
-                </Link>
+                <li key={value.id}>
+                  <Link
+                    href={value.href}
+                    className={cn(
+                      pathname === value.href
+                        ? "text-blue-500"
+                        : "text-zinc-800",
+                      "text-lg font-bold leading-[1.125rem] tracking-tight hover:text-blue-500 transition-all duration-500"
+                    )}
+                  >
+                    {value.routeName}
+                  </Link>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
-          <div className="hidden xl:flex gap-x-7 items-center">
-            <Link
-              href={"/login"}
-              className={cn(
-                pathname === "/login" ? "text-blue-500" : "text-zinc-800",
-                "text-lg font-bold leading-[1.125rem] tracking-tight hover:text-blue-500 transition-all duration-500"
-              )}
-            >
-              Đăng nhập
-            </Link>
-            <Button href="/trial" size="sm" color="white">
-              Dùng thử
-            </Button>
-          </div>
+          <ul className="hidden xl:flex gap-x-7 items-center">
+            <li>
+              <Link
+                href={"/login"}
+                className={cn(
+                  pathname === "/login" ? "text-blue-500" : "text-zinc-800",
+                  "text-lg font-bold leading-[1.125rem] tracking-tight hover:text-blue-500 transition-all duration-500"
+                )}
+              >
+                Đăng nhập
+              </Link>
+            </li>
+            <li>
+              <Button href="/trial" size="sm" color="white">
+                Dùng thử
+              </Button>
+            </li>
+          </ul>
           <span
             onClick={toggleMenu}
             className="flex items-center xl:hidden gap-2 cursor-pointer"

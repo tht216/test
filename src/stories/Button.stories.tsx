@@ -2,8 +2,8 @@ import type { Story, StoryDefault } from "@ladle/react";
 import { Button } from "@src/components";
 import React from "react";
 
-type IButtonColor = "blue" | "white";
-type IButtonSize = "sm" | "lg";
+type IButtonColor = "blue" | "white" | "gray";
+type IButtonSize = "xs" | "sm" | "lg";
 
 interface IButtonProps {
   label?: React.ReactNode;
@@ -11,6 +11,7 @@ interface IButtonProps {
   size?: IButtonSize;
   className?: string;
   href: string;
+  disable?: boolean;
 }
 
 export default {
@@ -18,11 +19,12 @@ export default {
   args: {
     label: "Dùng thử",
     href: "",
+    disable: false,
   },
   argTypes: {
     size: {
       defaultValue: "lg",
-      options: ["sm", "lg"],
+      options: ["xs", "sm", "lg"],
       label: "Button size",
       control: {
         type: "inline-radio",
@@ -30,7 +32,7 @@ export default {
     },
     color: {
       defaultValue: "blue",
-      options: ["blue", "white"],
+      options: ["blue", "white", "gray"],
       label: "Button color",
       control: {
         type: "inline-radio",
@@ -44,10 +46,11 @@ export const ButtonStory: Story<IButtonProps> = ({
   color,
   label,
   href,
+  disable,
 }) => {
   return (
     <div className="flex flex-col justify-center items-center w-full h-full">
-      <Button href={href} size={size} color={color}>
+      <Button disable={disable} href={href} size={size} color={color}>
         {label}
       </Button>
     </div>
