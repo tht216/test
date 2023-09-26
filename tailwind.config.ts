@@ -59,6 +59,7 @@ const config: Config = {
           500: "#74788D",
           800: "#2A3042",
         },
+        stone: { 950: "#0F0F0F" },
       },
 
       fontFamily: {
