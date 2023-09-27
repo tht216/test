@@ -17,8 +17,12 @@ const config: Config = {
       },
     },
     extend: {
+      translate: {
+        "full-2.81rem": "100% + 2.81rem",
+      },
       colors: {
         zinc: {
+          500: "#737B7D",
           700: "#292929",
           800: "#303133",
         },
@@ -33,6 +37,8 @@ const config: Config = {
           200: "#EAEAEA",
         },
         stone: { 950: "#0F0F0F" },
+        divider: { 500: "#E2E5E6" },
+        neutral: { 700: "#373F41" },
       },
 
       fontFamily: {

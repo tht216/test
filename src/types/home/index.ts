@@ -14,3 +14,10 @@ export interface IFeatureItem {
   featureHeader: string;
   featureDescription: string;
 }
+
+export interface ICustomerItem {
+  customerBrand: string;
+  customerLogo: string;
+  customerDescription: string;
+  customerRepresentative: string;
+}
