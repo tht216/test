@@ -4,10 +4,10 @@ import { PROS_ITEMS } from "@src/constants/home";
 import type { IProsItem } from "@src/types/home";
 import React from "react";
 
-type Props = {
+interface Props {
   className?: string;
   prosItem: IProsItem;
-};
+}
 
 export default {
   title: "Components",
