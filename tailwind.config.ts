@@ -22,6 +22,7 @@ const config: Config = {
       },
       colors: {
         zinc: {
+          400: "#484848",
           500: "#737B7D",
           700: "#292929",
           800: "#303133",
@@ -38,7 +39,7 @@ const config: Config = {
         },
         stone: { 950: "#0F0F0F" },
         divider: { 500: "#E2E5E6" },
-        neutral: { 700: "#373F41" },
+        neutral: { 200: "#E0E0E0", 700: "#373F41" },
       },
 
       fontFamily: {
