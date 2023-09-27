@@ -17,6 +17,9 @@ const config: Config = {
       },
     },
     extend: {
+      translate: {
+        "full-2.81rem": "100% + 2.81rem",
+      },
       colors: {
         red: {
           400: "#F46A6A",
@@ -59,7 +62,6 @@ const config: Config = {
           500: "#74788D",
           800: "#2A3042",
         },
-        stone: { 950: "#0F0F0F" },
       },
 
       fontFamily: {
