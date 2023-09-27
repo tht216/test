@@ -17,9 +17,6 @@ const config: Config = {
       },
     },
     extend: {
-      translate: {
-        "full-2.81rem": "100% + 2.81rem",
-      },
       colors: {
         zinc: {
           400: "#484848",
