@@ -2,7 +2,8 @@ import type { IProsItem } from "@src/types/home";
 import cn from "classnames";
 import Image from "next/image";
 import { Title } from "@src/components";
-type Props = {
+
+interface Props {
   className?: string;
   prosItem?: IProsItem;
 };
