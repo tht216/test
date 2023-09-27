@@ -17,9 +17,6 @@ const config: Config = {
       },
     },
     extend: {
-      translate: {
-        "full-2.81rem": "100% + 2.81rem",
-      },
       colors: {
         zinc: {
           400: "#484848",
@@ -37,21 +34,34 @@ const config: Config = {
         gray: {
           200: "#EAEAEA",
         },
-        stone: { 950: "#0F0F0F" },
+        stone: { 300: "#C4C4C4", 950: "#0F0F0F" },
         divider: { 500: "#E2E5E6" },
-        neutral: { 200: "#E0E0E0", 700: "#373F41" },
+        neutral: {
+          50: "#FAFAFA",
+          200: "#E0E0E0",
+          400: "#949494",
+          700: "#373F41",
+        },
+        slate: { 100: "#F3F3F9", 500: "#74788D" },
       },
 
       fontFamily: {
         Helvetica: ["Helvetica Neue", "ui-sans-serif", "system-ui"],
       },
-
+      backgroundPosition: {
+        "left-0.68": "center left 0.68rem",
+        "left-0.88": "center left 0.88rem",
+        "right-0.87": "center right 0.87rem"
+      },
       backgroundImage: {
         "gradient-blue":
           "linear-gradient(100deg, #009DF5 -14.88%, #3CC4FF 112.1%)",
         "gradient-blue-white":
           "linear-gradient(0deg, rgba(255, 255, 255, 0.50) 0%, rgba(255, 255, 255, 0.50) 100%), linear-gradient(95deg, #0199EE -3.33%, #5FCFFF 104.02%)",
         pros: "url('/background/bg-pros.svg')",
+        search: "url('/icon/search.svg')",
+        "search-big": "url('/icon/search-big.svg')",
+        select: "url('/icon/select.svg')"
       },
 
       width: {
