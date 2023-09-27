@@ -38,47 +38,52 @@ const Title: React.FC<ITitleProps> = ({
     left: "text-left",
   } as const;
 
-  switch (size) {
-    case "5xl":
-      return (
-        <h1
-          className={cn(
-            className,
-            SIZE_MAPPING[size],
-            COLOR_MAPPING[color],
-            ALIGN_MAPPING[align],
-          )}
-        >
-          {children}
-        </h1>
-      );
-    case "4xl":
-      return (
-        <h2
-          className={cn(
-            className,
-            SIZE_MAPPING[size],
-            COLOR_MAPPING[color],
-            ALIGN_MAPPING[align],
-          )}
-        >
-          {children}
-        </h2>
-      );
-    default:
-      return (
-        <h3
-          className={cn(
-            className,
-            SIZE_MAPPING[size],
-            COLOR_MAPPING[color],
-            ALIGN_MAPPING[align],
-          )}
-        >
-          {children}
-        </h3>
-      );
-  }
+  const SIZE_5XL_HEADING = (
+    <h1
+      className={cn(
+        className,
+        SIZE_MAPPING[size],
+        COLOR_MAPPING[color],
+        ALIGN_MAPPING[align]
+      )}
+    >
+      {children}
+    </h1>
+  );
+
+  const SIZE_4XL_HEADING = (
+    <h2
+      className={cn(
+        className,
+        SIZE_MAPPING[size],
+        COLOR_MAPPING[color],
+        ALIGN_MAPPING[align]
+      )}
+    >
+      {children}
+    </h2>
+  );
+
+  const SIZE_SMALL_HEADING = (
+    <h3
+      className={cn(
+        className,
+        SIZE_MAPPING[size],
+        COLOR_MAPPING[color],
+        ALIGN_MAPPING[align]
+      )}
+    >
+      {children}
+    </h3>
+  );
+
+  const HEADING_MAPPING_BY_SIZE = {
+    "5xl": SIZE_5XL_HEADING,
+    "4xl": SIZE_4XL_HEADING,
+    lg: SIZE_SMALL_HEADING,
+  } as const;
+
+  return HEADING_MAPPING_BY_SIZE[size];
 };
 
 export default Title;

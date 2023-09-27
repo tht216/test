@@ -1,6 +1,5 @@
 import type { Story, StoryDefault } from "@ladle/react";
 import { Title } from "@src/components";
-import "@src/app/globals.css";
 
 type ITitleColor = "zinc-800" | "zinc-700" | "blue" | "white";
 type ITitleSize = "5xl" | "4xl" | "lg";
