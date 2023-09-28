@@ -10,7 +10,6 @@ interface IButtonProps {
   color?: IButtonColor;
   size?: IButtonSize;
   className?: string;
-  href: string;
   disable?: boolean;
 }
 
@@ -18,7 +17,6 @@ export default {
   title: "Components",
   args: {
     label: "Dùng thử",
-    href: "",
     disable: false,
   },
   argTypes: {

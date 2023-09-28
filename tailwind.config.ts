@@ -32,6 +32,7 @@ const config: Config = {
         gray: {
           200: "#EAEAEA",
         },
+        stone: { 950: "#0F0F0F" },
       },
 
       fontFamily: {
