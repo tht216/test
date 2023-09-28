@@ -7,6 +7,8 @@ import FeatureItem from "@src/components/FeatureItem";
 import Slider from "@src/components/Slider";
 import Footer from "@src/components/Footer";
 import Input from "@src/components/Input";
+import SideBar from "@src/components/SideBar";
+import HeaderCRM from "./HeaderCRM";
 
 export {
   Button,
@@ -18,4 +20,6 @@ export {
   Slider,
   Footer,
   Input,
+  SideBar,
+  HeaderCRM
 };

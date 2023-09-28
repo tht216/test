@@ -33,6 +33,7 @@ const config: Config = {
         },
         gray: {
           200: "#EAEAEA",
+          600: "#555B6D",
         },
         stone: { 300: "#C4C4C4", 950: "#0F0F0F" },
         divider: { 500: "#E2E5E6" },
@@ -40,9 +41,10 @@ const config: Config = {
           50: "#FAFAFA",
           200: "#E0E0E0",
           400: "#949494",
+          450: "#A3A3A3",
           700: "#373F41",
         },
-        slate: { 100: "#F3F3F9", 500: "#74788D" },
+        slate: { 100: "#F3F3F9", 500: "#74788D", 800: "#2A3042" },
       },
 
       fontFamily: {
@@ -51,7 +53,7 @@ const config: Config = {
       backgroundPosition: {
         "left-0.68": "center left 0.68rem",
         "left-0.88": "center left 0.88rem",
-        "right-0.87": "center right 0.87rem"
+        "right-0.87": "center right 0.87rem",
       },
       backgroundImage: {
         "gradient-blue":
@@ -61,7 +63,7 @@ const config: Config = {
         pros: "url('/background/bg-pros.svg')",
         search: "url('/icon/search.svg')",
         "search-big": "url('/icon/search-big.svg')",
-        select: "url('/icon/select.svg')"
+        select: "url('/icon/select.svg')",
       },
 
       width: {
