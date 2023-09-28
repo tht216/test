@@ -4,7 +4,7 @@ import cn from "classnames";
 type IButtonColor = "blue" | "white" | "gray";
 type IButtonSize = "xs" | "sm" | "lg";
 
-export interface IButtonProps {
+interface IButtonProps {
   children?: React.ReactNode;
   color?: IButtonColor;
   size?: IButtonSize;
