@@ -2,7 +2,7 @@ import type { Story, StoryDefault } from "@ladle/react";
 import { Slider } from "@src/components";
 import React from "react";
 
-type Props = {
+interface Props {
   className?: string;
 };
 

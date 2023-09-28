@@ -4,7 +4,7 @@ interface Props {
   className?: string;
 }
 
-const Footer: React.FC<Props> = ({ className }) => {
+const Footer: React.FC<Props> = ({ className = "" }) => {
   return (
     <footer className={cn(className, "bg-zinc-400 py-[3.75rem]")}>
       <p className="text-center">
