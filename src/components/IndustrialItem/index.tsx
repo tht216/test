@@ -5,10 +5,10 @@ import Image from "next/image";
 interface Props {
   className?: string;
   industrialItem?: IIndustrialItem;
-};
+}
 
 const IndustrialItem: React.FC<Props> = ({
-  className,
+  className = "",
   industrialItem = { industrialLogo: "", industrialDescription: "" },
 }) => {
   return (

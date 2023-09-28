@@ -8,7 +8,7 @@ interface Props {
 }
 
 const FeatureItem: React.FC<Props> = ({
-  className,
+  className = "",
   featureItem = { featureLogo: "", featureDescription: "", featureHeader: "" },
 }) => {
   return (
@@ -24,13 +24,9 @@ const FeatureItem: React.FC<Props> = ({
         className="mb-[0.5rem] h-[46px] w-auto"
       />
       <p className="text-zinc-800 text-lg font-normal leading-[1.5rem]">
-        {
-          <>
-            <b>{featureItem.featureHeader}</b>
-            <br />
-            {featureItem.featureDescription}
-          </>
-        }
+        <b>{featureItem.featureHeader}</b>
+        <br />
+        {featureItem.featureDescription}
       </p>
     </div>
   );

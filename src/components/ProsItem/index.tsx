@@ -6,10 +6,10 @@ import { Title } from "@src/components";
 interface Props {
   className?: string;
   prosItem?: IProsItem;
-};
+}
 
 const ProsItem: React.FC<Props> = ({
-  className,
+  className = "",
   prosItem = { prosLogo: "", prosDescription: "", prosHeader: "" },
 }) => {
   return (
