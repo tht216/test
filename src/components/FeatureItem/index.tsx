@@ -1,10 +1,11 @@
 import type { IFeatureItem } from "@src/types/home";
 import cn from "classnames";
 import Image from "next/image";
-type Props = {
+
+interface Props {
   className?: string;
   featureItem?: IFeatureItem;
-};
+}
 
 const FeatureItem: React.FC<Props> = ({
   className,

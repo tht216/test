@@ -1,7 +1,8 @@
 import type { IIndustrialItem } from "@src/types/home";
 import cn from "classnames";
 import Image from "next/image";
-type Props = {
+
+interface Props {
   className?: string;
   industrialItem?: IIndustrialItem;
 };

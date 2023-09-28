@@ -4,10 +4,10 @@ import { FEATURE_ITEMS } from "@src/constants/home";
 import type { IFeatureItem } from "@src/types/home";
 import React from "react";
 
-type Props = {
+interface Props {
   className?: string;
   featureItem: IFeatureItem;
-};
+}
 
 export default {
   title: "Components",
