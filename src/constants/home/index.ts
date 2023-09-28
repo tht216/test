@@ -1,4 +1,9 @@
-import type { IFeatureItem, IIndustrialItem, IProsItem } from "@src/types/home";
+import type {
+  ICustomerItem,
+  IFeatureItem,
+  IIndustrialItem,
+  IProsItem,
+} from "@src/types/home";
 import prosLogo1 from "@src/assets/icons/home/pros-1.svg";
 import prosLogo2 from "@src/assets/icons/home/pros-2.svg";
 import prosLogo3 from "@src/assets/icons/home/pros-3.svg";
@@ -16,6 +21,8 @@ import featureLogo1 from "@src/assets/icons/home/features-1.svg";
 import featureLogo2 from "@src/assets/icons/home/features-2.svg";
 import featureLogo3 from "@src/assets/icons/home/features-3.svg";
 import featureLogo4 from "@src/assets/icons/home/features-4.svg";
+import googleLogo from "src/assets/logos/google.svg";
+import netflixLogo from "src/assets/logos/netflix.svg";
 
 export const PROS_ITEMS: Array<IProsItem> = [
   {
@@ -102,5 +109,36 @@ export const FEATURE_ITEMS: Array<IFeatureItem> = [
     featureDescription: "Dễ dàng theo dõi báo cáo doanh thu chi tiết",
     featureHeader: "Báo cáo bán hàng",
     featureLogo: featureLogo4,
+  },
+];
+
+export const CUSTOMER_ITEMS: Array<ICustomerItem> = [
+  {
+    customerBrand: "Google",
+    customerLogo: googleLogo,
+    customerDescription:
+      "Est tation latine aliquip id, mea ad tale illud definitiones. Periculis omittantur necessitatibus eum ad, pro eripuit minimum comprehensam ne, usu cu stet.",
+    customerRepresentative: "Connie Robertson",
+  },
+  {
+    customerBrand: "Netflix",
+    customerLogo: netflixLogo,
+    customerDescription:
+      "Est tation latine aliquip id, mea ad tale illud definitiones. Periculis omittantur necessitatibus eum ad, pro eripuit minimum comprehensam ne, usu cu stet.",
+    customerRepresentative: "Connie Robertson",
+  },
+  {
+    customerBrand: "Google",
+    customerLogo: googleLogo,
+    customerDescription:
+      "Est tation latine aliquip id, mea ad tale illud definitiones. Periculis omittantur necessitatibus eum ad, pro eripuit minimum comprehensam ne, usu cu stet.",
+    customerRepresentative: "Connie Robertson",
+  },
+  {
+    customerBrand: "Netflix",
+    customerLogo: netflixLogo,
+    customerDescription:
+      "Est tation latine aliquip id, mea ad tale illud definitiones. Periculis omittantur necessitatibus eum ad, pro eripuit minimum comprehensam ne, usu cu stet.",
+    customerRepresentative: "Connie Robertson",
   },
 ];
