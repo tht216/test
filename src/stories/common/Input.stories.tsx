@@ -1,6 +1,7 @@
 import type { Story, StoryDefault } from "@ladle/react";
 import { Input } from "@src/components";
 import type { HTMLInputTypeAttribute } from "react";
+
 type IInputColor = "slate-100" | "neutral-50" | "white";
 type IInputSize = "sm" | "lg";
 type IInputAlign = "center" | "left";

@@ -4,7 +4,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { CMR_ROUTES } from "@src/constants/common";
-// import { useState } from "react";
 
 interface Props {
   className?: string;
@@ -13,18 +12,6 @@ interface Props {
 
 const SideBar: React.FC<Props> = ({ className, isOpen = true }) => {
   const pathname = usePathname();
-  // const [isOpened, setIsOpened] = useState<boolean>(false);
-  // const [isVisible, setIsVisible] = useState<boolean>(false);
-
-  // const toggleMenu = () => {
-  //   if (isOpened) {
-  //     setIsOpened((menuStatus) => !menuStatus);
-  //     setTimeout(() => setIsVisible((menuStatus) => !menuStatus), 500);
-  //   } else {
-  //     setIsVisible((menuStatus) => !menuStatus);
-  //     setTimeout(() => setIsOpened((menuStatus) => !menuStatus), 100);
-  //   }
-  // };
 
   return (
     <section
@@ -65,31 +52,6 @@ const SideBar: React.FC<Props> = ({ className, isOpen = true }) => {
             </li>
           ))}
         </ul>
-        {/* <span
-          onClick={toggleMenu}
-          className="flex items-center xl:hidden gap-2 cursor-pointer"
-        >
-          <p className="font-medium text-base leading-[1.82rem] text-zinc-800">
-            MENU
-          </p>
-          <div className="w-[1.125rem] h-[1.125rem]">
-            <button className="w-full h-full px-[0.1rem] flex flex-col gap-1 justify-center">
-              <span
-                className={cn(
-                  "w-[0.4625rem] h-[0.125rem] bg-zinc-800 block rounded-full transition-all duration-700 ease-in-out",
-                  isOpened ? "translate-x-full" : ""
-                )}
-              ></span>
-              <span className="w-[0.93rem] h-[0.125rem] bg-zinc-800 block rounded-full"></span>
-              <span
-                className={cn(
-                  "w-[0.69rem] h-[0.125rem] bg-zinc-800 block rounded-full transition-all duration-700 ease-in-out",
-                  isOpened ? "translate-x-1/3" : ""
-                )}
-              ></span>
-            </button>
-          </div>
-        </span> */}
       </nav>
     </section>
   );
