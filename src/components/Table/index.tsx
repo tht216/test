@@ -1,12 +1,16 @@
 import type { IColumnsTableType } from "@src/types/common";
 import cn from "classnames";
 import React from "react";
-import TableRows from "../TableBody";
+import TableRows from "../TableRows";
 import { TableHeader } from "..";
 
 interface TableProps<T, K extends keyof T> {
   className?: string;
-  dataSource: Array<T>;
+  dataSource: Array<
+    T & {
+      children?: T[];
+    }
+  >;
   columns: Array<IColumnsTableType<T, K>>;
 }
 

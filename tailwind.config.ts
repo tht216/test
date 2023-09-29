@@ -46,6 +46,8 @@ const config: Config = {
         divider: { 500: "#E2E5E6" },
         neutral: {
           50: "#FAFAFA",
+          80: "#FBFBFB",
+          100: "#F6F6F6",
           200: "#E0E0E0",
           400: "#949494",
           450: "#A3A3A3",

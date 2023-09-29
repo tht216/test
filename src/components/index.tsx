@@ -11,7 +11,7 @@ import SideBar from "@src/components/SideBar";
 import HeaderCRM from "@src/components/HeaderCRM";
 import Table from "@src/components/Table";
 import TableHeader from "@src/components/TableHeader";
-import TableRows from "@src/components/TableBody";
+import TableRows from "@src/components/TableRow";
 import Tag from "@src/components/Tag";
 import Pagination from "@src/components/Pagination";
 

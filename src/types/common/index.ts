@@ -28,5 +28,5 @@ export interface IColumnsTableType<T, K extends keyof T> {
   dataIndex?: K;
   title: string;
   width?: number;
-  render?: FC<T[K]>;
+  render?: FC<T>;
 }

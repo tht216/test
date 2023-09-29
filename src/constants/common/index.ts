@@ -1,4 +1,4 @@
-import type { ICMRRoute, IColumnsTableType, IOrder, IRoute } from "@src/types/common";
+import type { ICMRRoute, IOrder, IRoute } from "@src/types/common";
 import statistic from "@src/assets/icons/common/statistic.svg";
 import order from "@src/assets/icons/common/order.svg";
 import product from "@src/assets/icons/common/product.svg";
@@ -46,25 +46,11 @@ export const CMR_ROUTES: Array<ICMRRoute> = [
   },
 ];
 
-export const COLUMNS: IColumnsTableType<IOrder, keyof IOrder>[] = [
-  { title: "Mã đơn hàng", dataIndex: "orderId", key: "orderId" },
-  { title: "Khách hàng", dataIndex: "customerName", key: "customerName" },
-  { title: "Tình trạng", dataIndex: "status", key: "status" },
-  { title: "Thanh toán", dataIndex: "payment", key: "payment" },
-  {
-    title: "Kênh",
-    key: "channel",
-    render: (type) => {
-      return type;
-    },
-  },
-  { title: "Tổng tiền", dataIndex: "totalCost", key: "totalCost" },
-  { title: "Ngày tạo", dataIndex: "createdAt", key: "createdAt" },
-];
-
-
-
-export const DATA_SOURCE: Array<IOrder> = [
+export const DATA_SOURCE: Array<
+  IOrder & {
+    children?: IOrder[];
+  }
+> = [
   {
     orderId: "DH001",
     customerName: "Nguyễn Hoàng Văn A",
@@ -73,6 +59,35 @@ export const DATA_SOURCE: Array<IOrder> = [
     channel: "Shopee",
     totalCost: "1.111.111 VNĐ",
     createdAt: "01/01/2022 10:10 AM",
+    children: [
+      {
+        orderId: "DH001",
+        customerName: "Nguyễn Hoàng Văn A",
+        status: "Đã tạo",
+        payment: "Chưa thanh toán",
+        channel: "Shopee",
+        totalCost: "1.111.111 VNĐ",
+        createdAt: "01/01/2022 10:10 AM",
+      },
+      {
+        orderId: "DH001",
+        customerName: "Nguyễn Hoàng Văn A",
+        status: "Đã tạo",
+        payment: "Chưa thanh toán",
+        channel: "Shopee",
+        totalCost: "1.111.111 VNĐ",
+        createdAt: "01/01/2022 10:10 AM",
+      },
+      {
+        orderId: "DH001",
+        customerName: "Nguyễn Hoàng Văn A",
+        status: "Đã tạo",
+        payment: "Chưa thanh toán",
+        channel: "Shopee",
+        totalCost: "1.111.111 VNĐ",
+        createdAt: "01/01/2022 10:10 AM",
+      },
+    ],
   },
   {
     orderId: "DH002",

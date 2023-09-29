@@ -12,10 +12,10 @@ const COLUMNS: IColumnsTableType<IOrder, keyof IOrder>[] = [
   {
     title: "Kênh",
     key: "channel",
-    render: (channel) => {
+    render: (item) => {
       return (
         <Tag color="green" filled={true}>
-          {channel}
+          {`${item.channel}`}
         </Tag>
       );
     },
@@ -30,7 +30,7 @@ export default {
 
 export const TableStory: Story = () => {
   return (
-    <div className="flex flex-col justify-center items-center w-full h-full">
+    <div className="flex flex-col w-full h-full">
       <Table columns={COLUMNS} dataSource={DATA_SOURCE} />
     </div>
   );
