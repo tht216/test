@@ -10,7 +10,7 @@ interface Props {
   onClick: () => void;
 }
 
-const HeaderCRM: React.FC<Props> = ({ className, onClick, isOpen }) => {
+const HeaderCRM: React.FC<Props> = ({ className = "", onClick, isOpen }) => {
   return (
     <header
       className={cn(className, "w-full flex transition-all duration-500")}

@@ -10,7 +10,7 @@ interface Props {
   isOpen?: boolean;
 }
 
-const SideBar: React.FC<Props> = ({ className, isOpen = true }) => {
+const SideBar: React.FC<Props> = ({ className = "", isOpen = true }) => {
   const pathname = usePathname();
 
   return (
