@@ -8,7 +8,12 @@ import Slider from "@src/components/Slider";
 import Footer from "@src/components/Footer";
 import Input from "@src/components/Input";
 import SideBar from "@src/components/SideBar";
-import HeaderCRM from "./HeaderCRM";
+import HeaderCRM from "@src/components/HeaderCRM";
+import Table from "@src/components/Table";
+import TableHeader from "@src/components/TableHeader";
+import TableRows from "@src/components/TableBody";
+import Tag from "@src/components/Tag";
+import Pagination from "@src/components/Pagination";
 
 export {
   Button,
@@ -21,5 +26,10 @@ export {
   Footer,
   Input,
   SideBar,
-  HeaderCRM
+  HeaderCRM,
+  Table,
+  TableHeader,
+  TableRows,
+  Tag,
+  Pagination,
 };
