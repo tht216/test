@@ -9,4 +9,7 @@
       system-ui,
       sans-serif;
   }
+  select {
+    appearance: none;
+  }
 }

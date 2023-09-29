@@ -6,6 +6,9 @@ import IndustrialItem from "@src/components/IndustrialItem";
 import FeatureItem from "@src/components/FeatureItem";
 import Slider from "@src/components/Slider";
 import Footer from "@src/components/Footer";
+import Input from "@src/components/Input";
+import SideBar from "@src/components/SideBar";
+import HeaderCRM from "./HeaderCRM";
 
 export {
   Button,
@@ -16,4 +19,7 @@ export {
   FeatureItem,
   Slider,
   Footer,
+  Input,
+  SideBar,
+  HeaderCRM
 };
