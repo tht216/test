@@ -57,7 +57,23 @@ const config: Config = {
           50: "#EFF2F7",
           100: "#F3F3F9",
           500: "#74788D",
+          550: "#737791",
           800: "#2A3042",
+        },
+        emerald: {
+          50: "#E2FFF3",
+          400: "#4AB58E",
+        },
+        orange: {
+          50: "#FFF4DE",
+          400: "#FFA800",
+        },
+        fuchsia: { 100: "#F8E5FF" },
+        purple: {
+          400: "#CD7FE9",
+        },
+        indigo: {
+          950: "#151D48",
         },
       },
 
