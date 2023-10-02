@@ -18,6 +18,13 @@ const config: Config = {
     },
     extend: {
       colors: {
+        red: {
+          400: "#F46A6A",
+        },
+        green: {
+          400: "#49C180",
+          500: "#1FC561",
+        },
         zinc: {
           400: "#484848",
           500: "#737B7D",
@@ -39,12 +46,19 @@ const config: Config = {
         divider: { 500: "#E2E5E6" },
         neutral: {
           50: "#FAFAFA",
+          80: "#FBFBFB",
+          100: "#F6F6F6",
           200: "#E0E0E0",
           400: "#949494",
           450: "#A3A3A3",
           700: "#373F41",
         },
-        slate: { 100: "#F3F3F9", 500: "#74788D", 800: "#2A3042" },
+        slate: {
+          50: "#EFF2F7",
+          100: "#F3F3F9",
+          500: "#74788D",
+          800: "#2A3042",
+        },
       },
 
       fontFamily: {

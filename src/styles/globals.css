@@ -3,6 +3,11 @@
 @tailwind utilities;
 
 @layer base {
+  @font-face {
+    font-family: Poppins;
+    src: url(../fonts/Poppins-Medium.ttf);
+  }
+
   html {
     font-family:
       Helvetica Neue,
