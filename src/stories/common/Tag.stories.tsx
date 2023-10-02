@@ -13,7 +13,7 @@ interface ITagProps {
 export default {
   title: "Components",
   args: {
-    label: "Còn hàng                 500.000 VND",
+    label: "Còn hàng",
     filled: false,
   },
   argTypes: {

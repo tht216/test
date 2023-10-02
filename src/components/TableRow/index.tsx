@@ -16,6 +16,7 @@ const TableRow = <T, K extends keyof T>({
   columns,
 }: TableRowProps<T, K>): JSX.Element => {
   const [isExtended, setIsExtended] = useState(false);
+
   return (
     <>
       <tr>
@@ -53,6 +54,7 @@ const TableRow = <T, K extends keyof T>({
           </td>
         )}
       </tr>
+
       {isExtended &&
         dataSource.children?.map((value, index3) => (
           <tr key={`row-${index3}`}>
