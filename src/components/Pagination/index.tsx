@@ -2,6 +2,7 @@ import cn from "classnames";
 import type { FC } from "react";
 import React from "react";
 import arrow from "@src/assets/icons/common/eva_arrow-ios-back-fill.svg";
+import arrowDisabled from "@src/assets/icons/common/arrow-disabled.svg";
 import Image from "next/image";
 
 interface Props {
@@ -37,22 +38,29 @@ const Pagination: FC<Props> = ({
 
     return result;
   };
-  
+
   return (
     <div className={cn(className, "flex items-center gap-[0.81rem]")}>
       <button
-        className="w-6 h-6 cursor-pointer"
+        className={cn(
+          "w-6 h-6",
+          currentPage === 1 ? "cursor-not-allowed" : "cursor-pointer"
+        )}
         onClick={() => onChange(currentPage - 1)}
         disabled={currentPage === 1}
       >
-        <Image src={arrow} alt="arrow-left" className="w-full h-full" />
+        <Image
+          src={currentPage === 1 ? arrowDisabled : arrow}
+          alt="arrow-left"
+          className="w-full h-full"
+        />
       </button>
       <div className="flex items-center gap-[0.38rem]">
         {currentPage + 1 > maxPagePerView && (
           <>
             <p
               className={cn(
-                1 !== currentPage
+                currentPage !== 1
                   ? "text-slate-500 bg-white rounded-[30px]"
                   : "text-white bg-gradient-blue rounded-md",
                 "text-[13px] font-normal font-['Poppins'] w-[33.73px] h-[32.44px] flex items-center justify-center transition-all duration-500 cursor-pointer"
@@ -93,9 +101,9 @@ const Pagination: FC<Props> = ({
               key={index}
               className={cn(
                 value !== currentPage
-                  ? "text-slate-500 bg-white rounded-[30px]"
-                  : "text-white bg-gradient-blue rounded-md",
-                "text-[13px] font-normal font-['Poppins'] w-[33.73px] h-[32.44px] flex items-center justify-center transition-all duration-500 cursor-pointer"
+                  ? "text-slate-500 bg-white rounded-[30px] font-normal"
+                  : "text-white font-medium bg-gradient-blue rounded-md",
+                "text-[13px] font-['Poppins'] w-[33.73px] h-[32.44px] flex items-center justify-center transition-all duration-500 cursor-pointer"
               )}
               onClick={() => onChange(value)}
             >
@@ -150,14 +158,17 @@ const Pagination: FC<Props> = ({
       </div>
 
       <button
-        className="w-6 h-6 cursor-pointer"
+        className={cn(
+          "w-6 h-6",
+          currentPage === totalPage ? "cursor-not-allowed" : "cursor-pointer"
+        )}
         onClick={() => onChange(currentPage + 1)}
         disabled={currentPage === totalPage}
       >
         <Image
-          src={arrow}
+          src={currentPage === totalPage ? arrowDisabled : arrow}
           alt="arrow-left"
-          className="w-full h-full rotate-180"
+          className={"w-full h-full rotate-180"}
         />
       </button>
     </div>

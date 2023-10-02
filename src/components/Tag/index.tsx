@@ -22,7 +22,7 @@ const Tag: React.FC<ITagProps> = ({
   } as const;
 
   const COLOR_MAPPING = {
-    green: "text-green-400",
+    green: "text-green-500",
     red: "text-red-400",
   } as const;
 
