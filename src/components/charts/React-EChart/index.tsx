@@ -24,7 +24,7 @@ export interface ReactEChartsProps {
 
 export function ReactECharts({
   option,
-  className,
+  className = "",
   settings,
   loading,
   theme,

@@ -20,9 +20,9 @@ const CustomerChart: React.FC = () => {
   const dispatchActionRef = React.useRef<
     ((action: echarts.Payload) => void) | null
   >(null);
-  const [seriesVisibility, setSeriesVisibility] = React.useState<{
-    [key: string]: boolean;
-  }>({});
+  const [seriesVisibility, setSeriesVisibility] = React.useState<
+    Record<string, boolean>
+  >({});
   const xAxis = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
   const series: ISeries[] = [
     {

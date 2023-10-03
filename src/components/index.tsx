@@ -14,9 +14,9 @@ import TableHeader from "@src/components/TableHeader";
 import TableRows from "@src/components/TableRow";
 import Tag from "@src/components/Tag";
 import Pagination from "@src/components/Pagination";
-import ProfitChart from "@src/components/ProfitChart";
-import BestSellerChart from "./BestSellerChart";
-import CustomerChart from "./CustomerSatisfaction";
+import ProfitChart from "@src/components/charts/ProfitChart";
+import BestSellerChart from "@src/components/charts/BestSellerChart";
+import CustomerChart from "@src/components/charts/CustomerSatisfaction";
 
 export {
   Button,

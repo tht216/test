@@ -10,7 +10,7 @@ export interface LiquidFillGaugeProps {
 
 export function LiquidFillGauge({
   option,
-  className,
+  className = "",
 }: LiquidFillGaugeProps): JSX.Element {
   return <ReactECharts option={option} className={className} />;
 }

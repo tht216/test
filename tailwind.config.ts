@@ -70,7 +70,7 @@ const config: Config = {
         },
         orange: {
           50: "#FFF4DE",
-          400: "#FFA800",
+          400: "#FFA412",
         },
         fuchsia: { 100: "#F8E5FF" },
         purple: {
