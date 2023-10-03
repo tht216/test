@@ -7,7 +7,7 @@ export default {
 
 export const ChartStory: Story = () => {
   return (
-    <div className="flex flex-col justify-center items-center w-full h-full">
+    <div className="flex flex-col justify-center items-start w-full h-full">
       <BestSellerChart />
     </div>
   );

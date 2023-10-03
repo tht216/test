@@ -1,6 +1,12 @@
 import React, { useRef, useEffect } from "react";
 import { init, getInstanceByDom } from "echarts";
-import type { EChartsOption, ECharts, SetOptionOpts } from "echarts";
+import type {
+  EChartsOption,
+  ECharts,
+  SetOptionOpts,
+  Payload,
+  ECElementEvent,
+} from "echarts";
 import classNames from "classnames";
 import type { LiquidFillGaugeOption } from "@src/types/chart";
 
@@ -10,6 +16,10 @@ export interface ReactEChartsProps {
   settings?: SetOptionOpts;
   loading?: boolean;
   theme?: "light" | "dark";
+  dispatchActionRef?: React.MutableRefObject<
+    ((action: Payload) => void) | null
+  >;
+  onBarClick?: (params: ECElementEvent) => void;
 }
 
 export function ReactECharts({
@@ -18,6 +28,8 @@ export function ReactECharts({
   settings,
   loading,
   theme,
+  dispatchActionRef,
+  onBarClick,
 }: ReactEChartsProps): JSX.Element {
   const chartRef = useRef<HTMLDivElement>(null);
 
@@ -58,6 +70,30 @@ export function ReactECharts({
       loading === true ? chart?.showLoading() : chart?.hideLoading();
     }
   }, [loading, theme]);
+
+  useEffect(() => {
+    if (dispatchActionRef) {
+      if (chartRef.current !== null) {
+        const chart = getInstanceByDom(chartRef.current);
+        dispatchActionRef.current = (action: Payload) => {
+          if (chart) {
+            chart.dispatchAction(action);
+          }
+        };
+      }
+    }
+  }, [dispatchActionRef]);
+
+  useEffect(() => {
+    if (chartRef.current !== null) {
+      const chart = getInstanceByDom(chartRef.current);
+      chart?.on("mousedown", (params) => {
+        if (onBarClick) {
+          onBarClick(params); // Call the onBarClick callback with the event parameters
+        }
+      });
+    }
+  }, [onBarClick]);
 
   return (
     <div ref={chartRef} className={classNames(className, "w-full h-full")} />

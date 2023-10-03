@@ -1,16 +1,44 @@
 import * as React from "react";
 import { ReactECharts, type ReactEChartsProps } from "../React-EChart";
-// import classNames from "classnames";
+import classNames from "classnames";
+import { type Payload } from "echarts";
+import { formatNumber } from "@src/utils";
+
+type IColorChart = "#4AB58E" | "#FFA800" | "#CD7FE9";
+type ISupportColorChart = "#E2FFF3" | "#FFF4DE" | "#F8E5FF";
+
+interface ISeries {
+  supportColor: ISupportColorChart;
+  color: IColorChart;
+  name: string;
+  category: string;
+  data: number[];
+  barGap: string;
+  label: {
+    show: boolean;
+  };
+  legendHoverLink: boolean;
+  itemStyle: {
+    borderRadius: number;
+  };
+  barWidth: number;
+}
 
 const BestSellerChart: React.FC = () => {
-  const series = [
+  const dispatchActionRef = React.useRef<((action: Payload) => void) | null>(
+    null
+  );
+  const [seriesVisibility, setSeriesVisibility] = React.useState<{
+    [key: string]: boolean;
+  }>({});
+
+  const series: ISeries[] = [
     {
       supportColor: "#E2FFF3",
       color: "#4AB58E",
       name: "Áo thun nam",
       category: "Áo nam",
-      data: [11000, 25000, 5000, 2000, 4000, 1000, 13000, 1000],
-      type: "bar",
+      data: Array.from({ length: 12 }, () => Math.floor(Math.random() * 25000)),
       barGap: "25%",
       label: {
         show: false,
@@ -26,9 +54,7 @@ const BestSellerChart: React.FC = () => {
       color: "#FFA800",
       name: "Áo khoác nữ",
       category: "Áo nữ",
-      total: "18.823",
-      data: [9000, 25000, 700, 1000, 4000, 19000, 22000, 14000],
-      type: "bar",
+      data: Array.from({ length: 12 }, () => Math.floor(Math.random() * 25000)),
       barGap: "25%",
       label: {
         show: false,
@@ -44,9 +70,7 @@ const BestSellerChart: React.FC = () => {
       color: "#CD7FE9",
       name: "Áo thun nữ",
       category: "Áo nữ",
-      total: "18.823",
-      data: [13000, 5000, 6000, 12000, 4000, 17000, 1000, 20000],
-      type: "bar",
+      data: Array.from({ length: 12 }, () => Math.floor(Math.random() * 25000)),
       barGap: "25%",
       label: {
         show: false,
@@ -58,8 +82,16 @@ const BestSellerChart: React.FC = () => {
       barWidth: 16,
     },
   ];
+
+  const [dataArray, setDataArray] = React.useState<number[]>(
+    series.map((value) =>
+      value.data.reduce(function (prev, current) {
+        return prev + current;
+      })
+    )
+  );
+
   const xAxis = [
-    "Month",
     "Jan",
     "Feb",
     "Mar",
@@ -68,8 +100,14 @@ const BestSellerChart: React.FC = () => {
     "Jun",
     "July",
     "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
   ];
+
   const color = ["#4AB58E", "#FFCF00", "#CD7FE9"];
+
   const option: ReactEChartsProps["option"] = {
     color: color,
     textStyle: {
@@ -83,68 +121,11 @@ const BestSellerChart: React.FC = () => {
       },
     },
     legend: {
+      show: false,
       selectedMode: "multiple",
-      // formatter: function (name) {
-      //   for (let i = 0; i < series.length; i++) {
-      //     if (series[i].name === name) {
-      //       const data = series[i].data.reduce(function (prev, current) {
-      //         return prev + current;
-      //       });
-      //       return name + ": " + data;
-      //     }
-      //   }
-      //   return name;
-      // },
-      textStyle: {
-        formatter: [
-          "Plain text",
-          "{textBorder|textBorderColor + textBorderWidth}",
-          "{textShadow|textShadowColor + textShadowBlur + textShadowOffsetX + textShadowOffsetY}",
-          "{bg|backgroundColor + borderRadius + padding}",
-        ].join("\n"),
-
-        rich: {
-          textBorder: {
-            fontSize: 20,
-            textBorderColor: "#000",
-            textBorderWidth: 3,
-            color: "#fff",
-          },
-          textShadow: {
-            fontSize: 16,
-            textShadowBlur: 5,
-            textShadowColor: "#000",
-            textShadowOffsetX: 3,
-            textShadowOffsetY: 3,
-            color: "#fff",
-          },
-          bg: {
-            backgroundColor: "#339911",
-            color: "#fff",
-            borderRadius: 15,
-            padding: 5,
-          },
-          border: {
-            color: "#000",
-            borderColor: "#449911",
-            borderWidth: 1,
-            borderRadius: 3,
-            padding: 5,
-          },
-          shadow: {
-            backgroundColor: "#992233",
-            padding: 5,
-            color: "#fff",
-            shadowBlur: 5,
-            shadowColor: "#336699",
-            shadowOffsetX: 6,
-            shadowOffsetY: 6,
-          },
-        },
-      },
     },
     grid: {
-      left: 64,
+      left: 39,
       right: 0,
       top: 8,
       bottom: 28,
@@ -173,10 +154,18 @@ const BestSellerChart: React.FC = () => {
             return value.toString();
           }
         },
-        margin: 16,
+        margin: 19,
         color: "#7B91B0",
+        align: "left",
       },
     },
+    dataZoom: [
+      {
+        type: "inside",
+        startValue: 0,
+        endValue: 7,
+      },
+    ],
     series: series.map(
       ({
         name,
@@ -199,16 +188,59 @@ const BestSellerChart: React.FC = () => {
     ),
   };
 
+  const COLOR_TEXT_MAPPING = {
+    "#4AB58E": "text-emerald-400",
+    "#FFA800": "text-orange-400",
+    "#CD7FE9": "text-purple-400",
+  } as const;
+
   return (
     <>
       <div className="grow w-full">
-        <ReactECharts option={option} />
+        <ReactECharts
+          option={option}
+          dispatchActionRef={dispatchActionRef}
+          onBarClick={(params) => {
+            setDataArray(series?.map((value) => value.data[params.dataIndex]));
+          }}
+        />
       </div>
-      {/* <div className="mt-[1.44rem] flex gap-[2.88rem]">
-        {legends.map((value, index) => (
+      <div className="mt-[1.44rem] flex gap-[2.88rem]">
+        {series.map((value, index) => (
           <div
             key={index}
-            className="flex w-[14.7rem] items-center justify-between"
+            className={classNames(
+              "flex w-[14.7rem] items-center justify-between transition-all duration-500 cursor-pointer",
+              seriesVisibility[value.name] ? "grayscale" : ""
+            )}
+            onClick={() => {
+              if (dispatchActionRef.current) {
+                setSeriesVisibility((prevVisibility) => ({
+                  ...prevVisibility,
+                  [value.name]: !prevVisibility[value.name],
+                }));
+                dispatchActionRef.current({
+                  type: "legendToggleSelect",
+                  name: value.name,
+                });
+              }
+            }}
+            onMouseEnter={() => {
+              if (dispatchActionRef.current) {
+                dispatchActionRef.current({
+                  type: "highlight",
+                  seriesIndex: index,
+                });
+              }
+            }}
+            onMouseLeave={() => {
+              if (dispatchActionRef.current) {
+                dispatchActionRef.current({
+                  type: "downplay",
+                  seriesIndex: index,
+                });
+              }
+            }}
           >
             <div className="flex items-center gap-[0.63rem]">
               <svg
@@ -275,14 +307,14 @@ const BestSellerChart: React.FC = () => {
             <div
               className={classNames(
                 "text-right text-sm font-medium font-['Poppins'] leading-tight",
-                `text-[${value.color}]`
+                COLOR_TEXT_MAPPING[value.color]
               )}
             >
-              {value.total}
+              {formatNumber(dataArray[index])}
             </div>
           </div>
         ))}
-      </div> */}
+      </div>
     </>
   );
 };

@@ -7,24 +7,31 @@ interface Props {
   type: IChartType;
 }
 
+interface ISeries {
+  name: string;
+  data: number[];
+}
+
 const ProfitChart: React.FC<Props> = ({ type = "bar" }) => {
+  const series: ISeries[] = [
+    {
+      name: "Lazada",
+      data: Array.from({ length: 7 }, () =>
+        Math.floor(Math.random() * 9500000)
+      ),
+    },
+    {
+      name: "Shopee",
+      data: Array.from({ length: 7 }, () =>
+        Math.floor(Math.random() * 9500000)
+      ),
+    },
+  ];
   const option: ReactEChartsProps["option"] = {
     color: ["#0095FF", "#EA9F0D"],
     textStyle: {
       fontFamily: "Helvetica",
       color: "#222B45",
-    },
-    dataset: {
-      source: [
-        ["Date", "Lazada", "Shopee"],
-        ["Monday", 5.5, 5],
-        ["Tuesday", 7, 4.5],
-        ["Wednesday", 2.5, 9],
-        ["Thursday", 6.5, 2.7],
-        ["Friday", 5, 4.5],
-        ["Saturday", 7, 5.5],
-        ["Sunday", 9.5, 4.5],
-      ],
     },
     tooltip: {
       trigger: "axis",
@@ -33,7 +40,6 @@ const ProfitChart: React.FC<Props> = ({ type = "bar" }) => {
       },
     },
     legend: {
-      data: ["Lazada", "Shopee"],
       bottom: 0,
       textStyle: {
         fontFamily: "Helvetica",
@@ -60,58 +66,55 @@ const ProfitChart: React.FC<Props> = ({ type = "bar" }) => {
       axisLine: {
         show: false,
       },
+      data: [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday",
+      ],
     },
     yAxis: {
       type: "value",
       axisLabel: {
-        formatter: "{value}m",
+        formatter: (value) =>
+          value >= 1000000
+            ? (value / 1000000).toFixed(0) + "m"
+            : value >= 1000
+            ? (value / 1000).toFixed(0) + "k"
+            : value.toString(),
         margin: 16,
         color: "#7B91B0",
+        align: "left",
       },
     },
     series:
       type === "bar"
-        ? [
-            {
-              type: "bar",
-              barGap: "33.33%",
-              label: {
-                show: false,
-              },
-              legendHoverLink: true,
-              itemStyle: {
-                borderRadius: 2,
-              },
-              barWidth: 12,
+        ? series.map(({ name, data }) => ({
+            name,
+            data,
+            type: "bar",
+            barGap: "33.33%",
+            label: {
+              show: false,
             },
-            {
-              type: "bar",
-              label: {
-                show: false,
-              },
-              legendHoverLink: true,
-              itemStyle: {
-                borderRadius: 2,
-              },
-              barWidth: 12,
+            legendHoverLink: true,
+            itemStyle: {
+              borderRadius: 2,
             },
-          ]
-        : [
-            {
-              type: "line",
-              label: {
-                show: false,
-              },
-              legendHoverLink: true,
+            barWidth: 12,
+          }))
+        : series.map(({ name, data }) => ({
+            name,
+            data,
+            type: "line",
+            label: {
+              show: false,
             },
-            {
-              type: "line",
-              label: {
-                show: false,
-              },
-              legendHoverLink: true,
-            },
-          ],
+            legendHoverLink: true,
+          })),
   };
 
   return <ReactECharts option={option} />;
