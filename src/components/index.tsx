@@ -17,6 +17,7 @@ import Pagination from "@src/components/Pagination";
 import ProfitChart from "@src/components/charts/ProfitChart";
 import BestSellerChart from "@src/components/charts/BestSellerChart";
 import CustomerChart from "@src/components/charts/CustomerSatisfaction";
+import TableProductList from "./TableProductList";
 
 export {
   Button,
@@ -38,4 +39,5 @@ export {
   ProfitChart,
   BestSellerChart,
   CustomerChart,
+  TableProductList,
 };

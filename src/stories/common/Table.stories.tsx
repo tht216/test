@@ -1,8 +1,14 @@
 import type { Story, StoryDefault } from "@ladle/react";
-import { Table, Tag } from "@src/components";
+import { Table, TableProductList, Tag } from "@src/components";
 import { DATA_SOURCE } from "@src/constants/common";
 import type { IColumnsTableType, IOrder } from "@src/types/common";
 import React from "react";
+
+type ITypeTable = "productList" | "common";
+
+interface Props {
+  typeTable: ITypeTable;
+}
 
 const COLUMNS: IColumnsTableType<IOrder, keyof IOrder>[] = [
   { title: "Mã đơn hàng", dataIndex: "orderId", key: "orderId" },
@@ -26,12 +32,26 @@ const COLUMNS: IColumnsTableType<IOrder, keyof IOrder>[] = [
 
 export default {
   title: "Components",
-} satisfies StoryDefault;
+  argTypes: {
+    typeTable: {
+      defaultValue: "productList",
+      options: ["productList", "common"],
+      label: "Table Type",
+      control: {
+        type: "select",
+      },
+    },
+  },
+} satisfies StoryDefault<Props>;
 
-export const TableStory: Story = () => {
+export const TableStory: Story<Props> = ({ typeTable }) => {
+  const TYPE_TABLE_MAPPING = {
+    common: <Table type="check" columns={COLUMNS} dataSource={DATA_SOURCE} />,
+    productList: <TableProductList />,
+  };
   return (
     <div className="flex flex-col w-full h-full">
-      <Table columns={COLUMNS} dataSource={DATA_SOURCE} />
+      {TYPE_TABLE_MAPPING[typeTable]}
     </div>
   );
 };

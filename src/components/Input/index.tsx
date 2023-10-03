@@ -18,6 +18,8 @@ interface Props {
   disabled: boolean;
   options?: Array<string>;
   align?: IInputAlign;
+  checked?: boolean;
+  onChange?: () => void;
 }
 
 const Input: FC<Props> = React.forwardRef<HTMLInputElement, Props>(
@@ -34,6 +36,8 @@ const Input: FC<Props> = React.forwardRef<HTMLInputElement, Props>(
       disabled = false,
       options = [""],
       align = "left",
+      checked = false,
+      onChange,
       ...props
     },
     ref
@@ -111,6 +115,8 @@ const Input: FC<Props> = React.forwardRef<HTMLInputElement, Props>(
               )}
               placeholder={placeholder}
               type={type}
+              checked={checked}
+              onChange={onChange}
               {...props}
             />
           )}

@@ -4,6 +4,8 @@ import React from "react";
 import TableRows from "../TableRows";
 import { TableHeader } from "..";
 
+type ITableType = "check" | "radio" | "none";
+
 interface TableProps<T, K extends keyof T> {
   className?: string;
   dataSource: Array<
@@ -12,12 +14,14 @@ interface TableProps<T, K extends keyof T> {
     }
   >;
   columns: Array<IColumnsTableType<T, K>>;
+  type: ITableType;
 }
 
 const Table = <T, K extends keyof T>({
   dataSource,
   columns,
   className,
+  type = "none",
 }: TableProps<T, K>): JSX.Element => {
   return (
     <table
@@ -31,8 +35,13 @@ const Table = <T, K extends keyof T>({
           <col key={index} />
         ))}
       </colgroup>
-      <TableHeader columns={columns} />
-      <TableRows columns={columns} dataSource={dataSource} />
+      <TableHeader
+        checkAll={false}
+        handleCheckAllChange={() => {}}
+        columns={columns}
+        type={type}
+      />
+      <TableRows columns={columns} dataSource={dataSource} type={type} checkedAll={false} />
     </table>
   );
 };
