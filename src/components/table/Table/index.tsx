@@ -1,10 +1,15 @@
 import type { IColumnsTableType } from "@src/types/common";
 import cn from "classnames";
-import React from "react";
+import React, { type FC, useState } from "react";
 import TableRows from "../TableRows";
-import { TableHeader } from "..";
+import { TableHeader } from "../..";
 
 type ITableType = "check" | "radio" | "none";
+
+export interface IExpandable<T> {
+  expandedRowRender: FC<T>;
+  rowExpandable: (record: T) => boolean;
+}
 
 interface TableProps<T, K extends keyof T> {
   className?: string;
@@ -13,6 +18,7 @@ interface TableProps<T, K extends keyof T> {
       children?: T[];
     }
   >;
+  expandable?: IExpandable<T>;
   columns: Array<IColumnsTableType<T, K>>;
   type: ITableType;
 }
@@ -20,9 +26,16 @@ interface TableProps<T, K extends keyof T> {
 const Table = <T, K extends keyof T>({
   dataSource,
   columns,
-  className,
+  className = "",
+  expandable,
   type = "none",
 }: TableProps<T, K>): JSX.Element => {
+  const [checkedAll, setCheckedAll] = useState<boolean>(false);
+
+  const handleCheckedAll = (check: boolean) => {
+    setCheckedAll(check);
+  };
+
   return (
     <table
       className={cn(
@@ -36,12 +49,21 @@ const Table = <T, K extends keyof T>({
         ))}
       </colgroup>
       <TableHeader
-        checkAll={false}
-        handleCheckAllChange={() => {}}
+        checkAll={checkedAll}
+        onChange={() => setCheckedAll((prev) => !prev)}
         columns={columns}
+        expandable={expandable}
+        dataSource={dataSource}
         type={type}
       />
-      <TableRows columns={columns} dataSource={dataSource} type={type} checkedAll={false} />
+      <TableRows
+        columns={columns}
+        dataSource={dataSource}
+        type={type}
+        checkedAll={checkedAll}
+        expandable={expandable}
+        onCheckedAll={handleCheckedAll}
+      />
     </table>
   );
 };

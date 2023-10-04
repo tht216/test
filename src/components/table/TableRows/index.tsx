@@ -1,12 +1,17 @@
 import type { IColumnsTableType } from "@src/types/common";
 import TableRow from "../TableRow";
-import React, { useEffect, useState } from "react";
+import React, { type FC, useEffect, useState } from "react";
 
 type ITableType = "check" | "radio" | "none";
 
 interface Checkbox {
   id: number;
   checked: boolean;
+}
+
+interface IExpandable<T> {
+  expandedRowRender: FC<T>;
+  rowExpandable: (record: T) => boolean;
 }
 
 interface TableRowsProps<T, K extends keyof T> {
@@ -19,12 +24,14 @@ interface TableRowsProps<T, K extends keyof T> {
   type: ITableType;
   checkedAll: boolean;
   onCheckedAll?: (checkedAll: boolean) => void;
+  expandable?: IExpandable<T>;
 }
 
 const TableRows = <T, K extends keyof T>({
   dataSource,
   columns,
   type = "none",
+  expandable,
   checkedAll = false,
   onCheckedAll,
 }: TableRowsProps<T, K>): JSX.Element => {
@@ -64,7 +71,7 @@ const TableRows = <T, K extends keyof T>({
       }))
     );
   }, [checkedAll, dataSource]);
-  
+
   const rows = dataSource.map((row, index) => {
     return (
       <TableRow
@@ -76,6 +83,7 @@ const TableRows = <T, K extends keyof T>({
         checked={checkboxes[index].checked}
         onChecked={(check: boolean) => handleChecked(check, index)}
         onChange={() => handleCheckboxChange(index)}
+        expandable={expandable}
       />
     );
   });

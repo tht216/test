@@ -1,21 +1,30 @@
 import type { IColumnsTableType } from "@src/types/common";
 import cn from "classnames";
 import { Input } from "@src/components";
+import { type IExpandable } from "../Table";
 
 type ITableType = "check" | "radio" | "none";
 
 interface TableHeaderProps<T, K extends keyof T> {
   columns: Array<IColumnsTableType<T, K>>;
   type: ITableType;
-  handleCheckAllChange: () => void;
+  onChange?: () => void;
   checkAll: boolean;
+  dataSource: Array<
+    T & {
+      children?: T[];
+    }
+  >;
+  expandable?: IExpandable<T>;
 }
 
 const TableHeader = <T, K extends keyof T>({
   columns,
   type = "none",
-  handleCheckAllChange,
+  onChange,
   checkAll = false,
+  dataSource,
+  expandable,
 }: TableHeaderProps<T, K>): JSX.Element => {
   const headers = columns.map((column, index) => {
     const WIDTH_MAPPING = {
@@ -50,11 +59,20 @@ const TableHeader = <T, K extends keyof T>({
               disabled={false}
               checked={checkAll}
               className="ml-[0.69rem]"
-              onChange={handleCheckAllChange}
+              {...{ onChange: onChange }}
             />
           </th>
         )}
         {headers}
+        {(dataSource.some((value) => value.children) || expandable) && (
+          <th
+            className={cn(
+              "border-b-2 pt-4 pb-[0.81rem] border-slate-50 text-black text-sm font-medium text-left"
+            )}
+          >
+            Tùy chọn
+          </th>
+        )}
       </tr>
     </thead>
   );

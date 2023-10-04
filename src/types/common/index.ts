@@ -26,7 +26,7 @@ export interface IOrder {
 export interface IColumnsTableType<T, K extends keyof T> {
   key: K;
   dataIndex?: K;
-  title: ReactNode;
+  title?: ReactNode;
   width?: number;
   render?: FC<T>;
 }

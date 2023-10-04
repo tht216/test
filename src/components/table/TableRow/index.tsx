@@ -1,6 +1,6 @@
 import type { IColumnsTableType } from "@src/types/common";
 import extendedLogo from "@src/assets/icons/common/extended.svg";
-import { useEffect, useState } from "react";
+import { type FC, useEffect, useState } from "react";
 import classNames from "classnames";
 import Image from "next/image";
 import { Input } from "@src/components";
@@ -10,6 +10,11 @@ type ITableType = "check" | "radio" | "none";
 interface Checkbox {
   id: number;
   checked: boolean;
+}
+
+interface IExpandable<T> {
+  expandedRowRender: FC<T>;
+  rowExpandable: (record: T) => boolean;
 }
 
 interface TableRowProps<T, K extends keyof T> {
@@ -22,6 +27,7 @@ interface TableRowProps<T, K extends keyof T> {
   checked: boolean;
   onChecked: (checked: boolean) => void;
   onChange: () => void;
+  expandable?: IExpandable<T>;
 }
 
 const TableRow = <T, K extends keyof T>({
@@ -32,6 +38,7 @@ const TableRow = <T, K extends keyof T>({
   checked = false,
   onChecked,
   onChange,
+  expandable,
 }: TableRowProps<T, K>): JSX.Element => {
   const [isExtended, setIsExtended] = useState(false);
   const [checkboxes, setCheckboxes] = useState<Checkbox[] | undefined>(
@@ -79,7 +86,7 @@ const TableRow = <T, K extends keyof T>({
               type="checkbox"
               disabled={false}
               className="ml-[0.69rem]"
-              onChange={onChange}
+              {...{ onChange: onChange }}
             />
           </td>
         )}
@@ -116,6 +123,24 @@ const TableRow = <T, K extends keyof T>({
             />
           </td>
         )}
+        {expandable && expandable?.rowExpandable(dataSource) && (
+          <td
+            className={classNames(
+              isExtended ? "bg-neutral-100" : "",
+              "text-zinc-800 pt-[1.69rem] pb-[1.44rem] text-sm font-normal border-y border-slate-50 transition-all duration-50"
+            )}
+          >
+            <Image
+              src={extendedLogo}
+              alt="extended"
+              className={classNames(
+                !isExtended ? "rotate-180" : "",
+                "transition-all duration-100 cursor-pointer"
+              )}
+              onClick={() => setIsExtended((prev) => !prev)}
+            />
+          </td>
+        )}
       </tr>
 
       {isExtended &&
@@ -134,7 +159,7 @@ const TableRow = <T, K extends keyof T>({
                   type="checkbox"
                   disabled={false}
                   className="ml-[0.69rem]"
-                  onChange={() => handleCheckboxChange(index3)}
+                  {...{ onChange: () => handleCheckboxChange(index3) }}
                 />
               </td>
             )}
@@ -152,6 +177,9 @@ const TableRow = <T, K extends keyof T>({
             })}
           </tr>
         ))}
+      {isExtended &&
+        expandable?.rowExpandable(dataSource) &&
+        expandable?.expandedRowRender(dataSource)}
     </>
   );
 };
