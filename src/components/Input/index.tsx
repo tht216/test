@@ -4,7 +4,7 @@ import React from "react";
 
 type IInputColor = "slate-100" | "neutral-50" | "white";
 type IInputSize = "sm" | "lg";
-type IInputAlign = "center" | "left";
+type IInputAlign = "center" | "left" | "right";
 
 interface Props {
   className?: string;
@@ -18,6 +18,8 @@ interface Props {
   disabled: boolean;
   options?: Array<string>;
   align?: IInputAlign;
+  checked?: boolean;
+  errorMessage?: string;
 }
 
 const Input: FC<Props> = React.forwardRef<HTMLInputElement, Props>(
@@ -34,6 +36,8 @@ const Input: FC<Props> = React.forwardRef<HTMLInputElement, Props>(
       disabled = false,
       options = [""],
       align = "left",
+      errorMessage = "",
+      checked = false,
       ...props
     },
     ref
@@ -53,6 +57,7 @@ const Input: FC<Props> = React.forwardRef<HTMLInputElement, Props>(
     const ALIGN_MAPPING = {
       center: "text-center",
       left: "text-left",
+      right: "text-right",
     };
 
     const SEARCH_SIZE_MAPPING = {
@@ -61,61 +66,70 @@ const Input: FC<Props> = React.forwardRef<HTMLInputElement, Props>(
     };
 
     return (
-      <div className={className}>
-        <>
-          {type === "select" ? (
-            <select
-              className={cn(
-                ALIGN_MAPPING[align],
-                COLOR_MAPPING[color],
-                SIZE_MAPPING[size],
-                "w-full py-[0.69rem] placeholder:font-normal rounded-md outline-0 text-zinc-800 pl-[1.12rem] pr-[2.522rem] bg-select bg-no-repeat bg-right-0.87"
-              )}
-              name={name}
-              id={name}
-              disabled={disabled}
-            >
-              {options.map((value, key) => (
-                <option key={key} value={value}>
-                  {value}
-                </option>
-              ))}
-            </select>
-          ) : type === "textarea" ? (
-            <textarea
-              name={name}
-              id={id}
-              rows={4}
-              disabled={disabled}
-              placeholder={placeholder}
-              className={cn(
-                ALIGN_MAPPING[align],
-                COLOR_MAPPING[color],
-                SIZE_MAPPING[size],
-                "w-full py-[0.75rem] placeholder:font-normal rounded-md outline-0 text-zinc-800 pl-[1.12rem] pr-[2.522rem] resize-none"
-              )}
-            ></textarea>
-          ) : (
+      <>
+        {type === "select" ? (
+          <select
+            className={cn(
+              className,
+              ALIGN_MAPPING[align],
+              COLOR_MAPPING[color],
+              SIZE_MAPPING[size],
+              "w-full py-[0.69rem] placeholder:font-normal rounded-md outline-0 text-zinc-800 pl-[1.12rem] pr-[2.522rem] bg-select bg-no-repeat bg-right-0.87"
+            )}
+            name={name}
+            id={name}
+            disabled={disabled}
+          >
+            {options.map((value, key) => (
+              <option key={key} value={value}>
+                {value}
+              </option>
+            ))}
+          </select>
+        ) : type === "textarea" ? (
+          <textarea
+            name={name}
+            id={id}
+            rows={4}
+            disabled={disabled}
+            placeholder={placeholder}
+            className={cn(
+              className,
+              ALIGN_MAPPING[align],
+              COLOR_MAPPING[color],
+              SIZE_MAPPING[size],
+              "w-full py-[0.75rem] placeholder:font-normal rounded-md outline-0 text-zinc-800 pl-[1.12rem] pr-[2.522rem] resize-none"
+            )}
+          ></textarea>
+        ) : (
+          <>
             <input
               disabled={disabled}
               ref={ref}
               id={id}
               name={name}
               className={cn(
+                className,
                 ALIGN_MAPPING[align],
                 COLOR_MAPPING[color],
                 SIZE_MAPPING[size],
-                "w-full py-[0.69rem] placeholder:font-normal rounded-md outline-0 text-zinc-800",
+                "placeholder:font-normal rounded-md outline-0 text-zinc-800",
                 isError ? "border-red-400" : "",
-                type === "search" ? SEARCH_SIZE_MAPPING[size] : "px-[1.12rem]"
+                type === "search" ? SEARCH_SIZE_MAPPING[size] : ""
               )}
               placeholder={placeholder}
               type={type}
+              checked={checked}
               {...props}
             />
-          )}
-        </>
-      </div>
+            {isError && (
+              <p className="text-red-500 text-sm leading-5 transition-all linear duration-200 bottom-0 opacity-100">
+                {errorMessage}
+              </p>
+            )}
+          </>
+        )}
+      </>
     );
   }
 );

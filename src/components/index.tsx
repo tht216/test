@@ -9,14 +9,18 @@ import Footer from "@src/components/Footer";
 import Input from "@src/components/Input";
 import SideBar from "@src/components/SideBar";
 import HeaderCRM from "@src/components/HeaderCRM";
-import Table from "@src/components/Table";
-import TableHeader from "@src/components/TableHeader";
-import TableRows from "@src/components/TableRow";
+import Table from "@src/components/table/Table";
+import TableHeader from "@src/components/table/TableHeader";
+import TableRows from "@src/components/table/TableRow";
 import Tag from "@src/components/Tag";
 import Pagination from "@src/components/Pagination";
 import ProfitChart from "@src/components/charts/ProfitChart";
 import BestSellerChart from "@src/components/charts/BestSellerChart";
 import CustomerChart from "@src/components/charts/CustomerSatisfaction";
+import TableProductList from "./table/TableProductList";
+import TableOrderList from "./table/TableOrderList";
+import TableProductDetail from "./table/TableProductDetail";
+import TableCartList from "./table/TableCartList";
 
 export {
   Button,
@@ -38,4 +42,8 @@ export {
   ProfitChart,
   BestSellerChart,
   CustomerChart,
+  TableProductList,
+  TableOrderList,
+  TableProductDetail,
+  TableCartList,
 };

@@ -1,4 +1,4 @@
-import type { FC } from "react";
+import type { FC, ReactNode } from "react";
 
 export interface IRoute {
   id: number;
@@ -26,7 +26,7 @@ export interface IOrder {
 export interface IColumnsTableType<T, K extends keyof T> {
   key: K;
   dataIndex?: K;
-  title: string;
+  title?: ReactNode;
   width?: number;
   render?: FC<T>;
 }
