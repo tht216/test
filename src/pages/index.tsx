@@ -7,7 +7,6 @@ import {
   Slider,
   Title,
 } from "@src/components";
-import request from "@src/utils/request";
 import {
   type IQA,
   type ICustomer,
@@ -26,9 +25,13 @@ import featureImage2 from "@src/assets/images/feature-2.svg";
 import qaImage from "@src/assets/images/qa-image.svg";
 import Image from "next/image";
 import classNames from "classnames";
-
-const BASE_URL =
-  "https://api.eazy-mock.teqn.asia/mock/4f66306b-d727-4efc-91e6-8a9479ab8245/home";
+import {
+  getCustomer,
+  getFeature,
+  getIndustry,
+  getQA,
+  getStrength,
+} from "@src/backendAPI/home";
 
 interface Props {
   strength: IStrength[];
@@ -39,6 +42,7 @@ interface Props {
 }
 const Home: FC<Props> = ({ strength, industry, feature, customer, qa }) => {
   const FEATURE_IMAGE: string[] = [featureImage1, featureImage2];
+  
   return (
     <>
       <section>
@@ -200,12 +204,7 @@ const Home: FC<Props> = ({ strength, industry, feature, customer, qa }) => {
       </section>
 
       <section className="mt-[8rem] mb-[10rem]">
-        <Title
-          size="4xl"
-          color="zinc-800"
-          align="center"
-          className="pb-[4rem]"
-        >
+        <Title size="4xl" color="zinc-800" align="center" className="pb-[4rem]">
           Q&A
         </Title>
         <div className="grid xl:grid-cols-2 grid-cols-1 gap-[4.75rem] container xl:px-[10.38rem] items-center">
@@ -224,11 +223,11 @@ const Home: FC<Props> = ({ strength, industry, feature, customer, qa }) => {
 export async function getStaticProps() {
   // Call an external API endpoint to get posts
   const [strength, industry, feature, customer, qa] = await Promise.all([
-    request.get(`${BASE_URL}/strength`),
-    request.get(`${BASE_URL}/industry`),
-    request.get(`${BASE_URL}/feature`),
-    request.get(`${BASE_URL}/customer`),
-    request.get(`${BASE_URL}/qa`),
+    getStrength(),
+    getIndustry(),
+    getFeature(),
+    getCustomer(),
+    getQA(),
   ]);
   return {
     props: {

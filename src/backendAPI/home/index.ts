@@ -6,3 +6,19 @@ const BASE_URL =
 export const getStrength = () => {
   return request.get(`${BASE_URL}/strength`);
 };
+
+export const getIndustry = () => {
+  return request.get(`${BASE_URL}/industry`);
+};
+
+export const getFeature = () => {
+  return request.get(`${BASE_URL}/feature`);
+};
+
+export const getCustomer = () => {
+  return request.get(`${BASE_URL}/customer`);
+};
+
+export const getQA = () => {
+  return request.get(`${BASE_URL}/qa`);
+};
