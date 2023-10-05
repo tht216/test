@@ -2,7 +2,7 @@ import type { IColumnsTableType } from "@src/types/common";
 import cn from "classnames";
 import React, { type FC, useState } from "react";
 import TableRows from "../TableRows";
-import { TableHeader } from "../..";
+import TableHeader from "../TableHeader";
 
 type ITableType = "check" | "radio" | "none";
 

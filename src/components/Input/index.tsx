@@ -20,7 +20,6 @@ interface Props {
   align?: IInputAlign;
   checked?: boolean;
   errorMessage?: string;
-  // onChange?: () => void;
 }
 
 const Input: FC<Props> = React.forwardRef<HTMLInputElement, Props>(
@@ -121,7 +120,6 @@ const Input: FC<Props> = React.forwardRef<HTMLInputElement, Props>(
               placeholder={placeholder}
               type={type}
               checked={checked}
-              // onChange={onChange}
               {...props}
             />
             {isError && (

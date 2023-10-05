@@ -18,7 +18,6 @@ export const formatNumber = (number: number) => {
   }
 
   // Join the parts to create the formatted number
-  console.log(parts.join(""));
   return parts.join("");
 };
 
