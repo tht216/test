@@ -42,7 +42,7 @@ interface Props {
 }
 const Home: FC<Props> = ({ strength, industry, feature, customer, qa }) => {
   const FEATURE_IMAGE: string[] = [featureImage1, featureImage2];
-  
+
   return (
     <>
       <section>
@@ -214,6 +214,18 @@ const Home: FC<Props> = ({ strength, industry, feature, customer, qa }) => {
               <QAItem key={index} qAItem={value} />
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="bg-zinc-100">
+        <div className="container pt-[5.75rem] pb-[4.31rem]">
+          <Title size="4xl" className="mb-[1.75rem]">
+            Wifosell - Tất cả những gì bạn cần để quản lý cửa hàng
+          </Title>
+          <p className="text-center text-zinc-800 text-lg font-normal font-['Mulish'] leading-[1.375rem] tracking-tight mb-[1.75rem]">
+            Chúc mừng bạn có 7 ngày dùng thử miễn phí. Nhanh tay đăng ký ngay !
+          </p>
+          <Button className="mx-auto">Dùng thử miễn phí</Button>
         </div>
       </section>
     </>

@@ -29,6 +29,7 @@ const config: Config = {
           500: "#1FC561",
         },
         zinc: {
+          100: "#EFEFEF",
           300: "#D6D6D6",
           400: "#B7B7B7",
           500: "#737B7D",
