@@ -1,16 +1,16 @@
-import type { IProsItem } from "@src/types/home";
+import type { IStrength } from "@src/types/home";
 import cn from "classnames";
 import Image from "next/image";
 import { Title } from "@src/components";
 
 interface Props {
   className?: string;
-  prosItem?: IProsItem;
+  value?: IStrength & { strengthLogo: string };
 }
 
 const ProsItem: React.FC<Props> = ({
   className = "",
-  prosItem = { prosLogo: "", prosDescription: "", prosHeader: "" },
+  value = { strengthTitle: "", strengthDescription: "", strengthLogo: "" },
 }) => {
   return (
     <div
@@ -21,15 +21,15 @@ const ProsItem: React.FC<Props> = ({
     >
       <div className="flex flex-col items-center justify-center w-full h-full px-[2.63rem]">
         <Image
-          src={prosItem.prosLogo}
-          alt={prosItem.prosHeader}
+          src={value.strengthLogo}
+          alt={value.strengthTitle}
           className="mb-[0.92rem] h-[80px] w-auto"
         />
         <Title size="lg" color="zinc-700" className="mb-[0.76rem]">
-          {prosItem.prosHeader}
+          {value.strengthTitle}
         </Title>
         <p className="text-zinc-700 text-lg font-normal leading-[2.15625rem] tracking-tight text-justify">
-          {prosItem.prosDescription}
+          {value.strengthDescription}
         </p>
       </div>
     </div>

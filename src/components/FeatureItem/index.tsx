@@ -18,14 +18,21 @@ const FeatureItem: React.FC<Props> = ({
         "flex flex-col items-start justify-center w-full"
       )}
     >
-      <Image
-        src={featureItem.featureLogo}
-        alt={featureItem.featureHeader}
-        className="mb-[0.5rem] h-[46px] w-auto"
-      />
+      {featureItem.featureLogo && featureItem.featureHeader && (
+        <Image
+          src={featureItem.featureLogo}
+          alt={featureItem.featureHeader}
+          className="mb-[0.5rem] h-[46px] w-auto"
+        />
+      )}
+
       <p className="text-zinc-800 text-lg font-normal leading-[1.5rem]">
-        <b>{featureItem.featureHeader}</b>
-        <br />
+        {featureItem.featureHeader && (
+          <>
+            <b>{featureItem.featureHeader}</b>
+            <br />
+          </>
+        )}
         {featureItem.featureDescription}
       </p>
     </div>

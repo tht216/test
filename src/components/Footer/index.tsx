@@ -6,7 +6,7 @@ interface Props {
 
 const Footer: React.FC<Props> = ({ className = "" }) => {
   return (
-    <footer className={cn(className, "bg-zinc-400 py-[3.75rem]")}>
+    <footer className={cn(className, "bg-zinc-900 py-[3.75rem]")}>
       <p className="text-center">
         <span className="text-neutral-200 text-sm font-normal">
           Copyright © 2023{" "}

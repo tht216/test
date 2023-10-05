@@ -1,7 +1,12 @@
 export interface IProsItem {
-  prosLogo: string;
-  prosHeader: string;
-  prosDescription: string;
+  strengthLogo: string;
+  strengthTitle: string;
+  strengthDescription: string;
+}
+
+export interface IStrength {
+  strengthDescription: string;
+  strengthTitle: string;
 }
 
 export interface IIndustrialItem {
@@ -11,7 +16,17 @@ export interface IIndustrialItem {
 
 export interface IFeatureItem {
   featureLogo: string;
-  featureHeader: string;
+  featureHeader?: string;
+  featureDescription: string;
+}
+
+export interface IFeature {
+  featureBigHeader: string;
+  featureContent: IFeatureContent[];
+}
+
+export interface IFeatureContent {
+  featureHeader?: string;
   featureDescription: string;
 }
 
@@ -20,4 +35,15 @@ export interface ICustomerItem {
   customerLogo: string;
   customerDescription: string;
   customerRepresentative: string;
+}
+
+export interface ICustomer {
+  customerBrand: string;
+  customerDescription: string;
+  customerRepresentative: string;
+}
+
+export interface IQA {
+  question: string;
+  answer: string;
 }

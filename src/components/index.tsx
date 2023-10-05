@@ -21,6 +21,7 @@ import TableProductList from "./table/TableProductList";
 import TableOrderList from "./table/TableOrderList";
 import TableProductDetail from "./table/TableProductDetail";
 import TableCartList from "./table/TableCartList";
+import QAItem from "./Q&A";
 
 export {
   Button,
@@ -46,4 +47,5 @@ export {
   TableOrderList,
   TableProductDetail,
   TableCartList,
+  QAItem,
 };

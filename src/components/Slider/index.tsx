@@ -11,13 +11,18 @@ import SliderItem from "@src/components/Slider/item";
 import { CUSTOMER_ITEMS } from "@src/constants/home";
 import arrow from "@src/assets/icons/home/left.svg";
 import Image from "next/image";
+import { type ICustomerItem } from "@src/types/home";
 
 interface Props {
   className?: string;
   children?: ReactNode;
+  customerItem?: ICustomerItem[];
 }
 
-const Slider: FC<Props> = ({ className = "" }) => {
+const Slider: FC<Props> = ({
+  className = "",
+  customerItem = CUSTOMER_ITEMS,
+}) => {
   const [swiper, setSwiper] = useState<SwiperCore>({});
 
   return (
@@ -40,7 +45,7 @@ const Slider: FC<Props> = ({ className = "" }) => {
             },
           }}
         >
-          {CUSTOMER_ITEMS.map((value, index) => (
+          {customerItem.map((value, index) => (
             <SwiperSlide key={index}>
               <SliderItem customer={value} />
             </SwiperSlide>

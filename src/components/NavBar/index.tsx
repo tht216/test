@@ -35,7 +35,7 @@ const NavBar: React.FC<Props> = ({ className = "" }) => {
   return (
     <header className={cn(className, "w-full")}>
       <div className="container">
-        <nav className="relative xl:min-h-[6.1875rem] min-h-[4.3125rem] w-full flex justify-between items-center">
+        <nav className="relative xl:min-h-[6.1875rem] min-h-[4.3125rem] w-full flex justify-between items-center 2xl:pl-[9.81rem] 2xl:pr-[10.31rem]">
           <div className="flex items-center gap-x-8">
             <Link href="/" className="max-w-[7.625rem] object-contain">
               <Image src={logo} className="w-full" alt="logo Wifosell" />

@@ -26,24 +26,26 @@ import netflixLogo from "src/assets/logos/netflix.svg";
 
 export const PROS_ITEMS: Array<IProsItem> = [
   {
-    prosLogo: prosLogo1,
-    prosHeader: "Đơn giản và dễ sử dụng",
-    prosDescription:
+    strengthLogo: prosLogo1,
+    strengthTitle: "Đơn giản và dễ sử dụng",
+    strengthDescription:
       "Nhân viên bán hàng chỉ mất 15 phút làm quen để bắt đầu bán hàng với Wifosell. Giao diện đơn giản, thân thiện, thông minh giúp bạn triển khai quản lý bán hàng thật dễ dàng và nhanh chóng.",
   },
   {
-    prosLogo: prosLogo2,
-    prosHeader: "Đầy đủ các chức năng cơ bản",
-    prosDescription:
+    strengthLogo: prosLogo2,
+    strengthTitle: "Đầy đủ các chức năng cơ bản",
+    strengthDescription:
       "Chúng tôi khảo sát, nghiên cứu, thiết kế phần mềm phù hợp cho các ngành hàng phổ biến hiện nay, với các chức năng đi từ cơ bản đến nâng cao, đáp ứng nhu cầu của người sử dụng",
   },
   {
-    prosLogo: prosLogo3,
-    prosHeader: "Tiết kiệm chi phí",
-    prosDescription:
+    strengthLogo: prosLogo3,
+    strengthTitle: "Tiết kiệm chi phí",
+    strengthDescription:
       "Miễn phí cài đặt và phí triển khai, nâng cấp, hỗ trợ. Giá thành hợp lý cho cửa hàng quy mô nhỏ và vừa, tạo điều kiện để bạn có thể áp dụng công nghệ vào quản lý cửa hàng.",
   },
 ];
+
+export const STRENGTH_IMAGE: string[] = [prosLogo1, prosLogo2, prosLogo3];
 
 export const INDUSTRIAL_ITEMS: Array<IIndustrialItem> = [
   {
@@ -88,6 +90,19 @@ export const INDUSTRIAL_ITEMS: Array<IIndustrialItem> = [
   },
 ];
 
+export const INDUSTRY_IMAGE: string[] = [
+  industrialLogo1,
+  industrialLogo2,
+  industrialLogo3,
+  industrialLogo4,
+  industrialLogo5,
+  industrialLogo6,
+  industrialLogo7,
+  industrialLogo8,
+  industrialLogo9,
+  industrialLogo10,
+];
+
 export const FEATURE_ITEMS: Array<IFeatureItem> = [
   {
     featureDescription: "Kiểm soát chính xác số lượng mặt hàng trong kho",
@@ -110,6 +125,13 @@ export const FEATURE_ITEMS: Array<IFeatureItem> = [
     featureHeader: "Báo cáo bán hàng",
     featureLogo: featureLogo4,
   },
+];
+
+export const FEATURE_IMAGES: string[] = [
+  featureLogo1,
+  featureLogo2,
+  featureLogo3,
+  featureLogo4,
 ];
 
 export const CUSTOMER_ITEMS: Array<ICustomerItem> = [
@@ -141,4 +163,11 @@ export const CUSTOMER_ITEMS: Array<ICustomerItem> = [
       "Est tation latine aliquip id, mea ad tale illud definitiones. Periculis omittantur necessitatibus eum ad, pro eripuit minimum comprehensam ne, usu cu stet.",
     customerRepresentative: "Connie Robertson",
   },
+];
+
+export const CUSTOMER_IMAGES: string[] = [
+  googleLogo,
+  netflixLogo,
+  googleLogo,
+  netflixLogo,
 ];

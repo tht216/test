@@ -28,9 +28,9 @@ const IndustrialItem: React.FC<Props> = ({
           index === 0 ? (
             value
           ) : (
-            <>
+            <span key={index}>
               <br />& {value}
-            </>
+            </span>
           )
         )}
       </h3>

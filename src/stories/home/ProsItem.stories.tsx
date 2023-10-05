@@ -17,7 +17,7 @@ export const ProsItemStory: Story<Props> = ({}) => {
   return (
     <div className="grid xl:grid-cols-3 grid-cols-1 gap-[1.94rem] w-full h-full">
       {PROS_ITEMS.map((value, index) => (
-        <ProsItem className="mx-auto" key={index} prosItem={value} />
+        <ProsItem className="mx-auto" key={index} value={value} />
       ))}
     </div>
   );

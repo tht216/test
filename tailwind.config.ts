@@ -13,10 +13,13 @@ const config: Config = {
       center: true,
       padding: {
         DEFAULT: "1rem",
-        lg: "1.5rem",
+        "2xl": "3rem",
       },
     },
     extend: {
+      boxShadow: {
+        inner: "0px 0px 23px 0px rgba(0, 0, 0, 0.25) inset",
+      },
       colors: {
         red: {
           400: "#F46A6A",
@@ -31,6 +34,7 @@ const config: Config = {
           500: "#737B7D",
           700: "#292929",
           800: "#303133",
+          900: "#484848",
         },
         blue: {
           500: "#308EE1",
@@ -48,11 +52,13 @@ const config: Config = {
         neutral: {
           50: "#FAFAFA",
           80: "#FBFBFB",
+          90: "#FCFCFC",
           100: "#F6F6F6",
           200: "#E0E0E0",
           400: "#949494",
           450: "#A3A3A3",
           700: "#373F41",
+          800: "#222222",
         },
         slate: {
           50: "#EFF2F7",
@@ -99,6 +105,7 @@ const config: Config = {
         search: "url('/icon/search.svg')",
         "search-big": "url('/icon/search-big.svg')",
         select: "url('/icon/select.svg')",
+        banner: "url('/background/banner.webp')",
       },
 
       width: {
