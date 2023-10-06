@@ -23,7 +23,7 @@ const Slider: FC<Props> = ({
   className = "",
   customerItem = CUSTOMER_ITEMS,
 }) => {
-  const [swiper, setSwiper] = useState<SwiperCore>({});
+  const [swiper, setSwiper] = useState<SwiperCore | null>(null);
 
   return (
     <>
@@ -51,23 +51,21 @@ const Slider: FC<Props> = ({
             </SwiperSlide>
           ))}
         </Swiper>
-        <div
-          style={{
-            "--swiper-pagination-color": "#FFF",
-            "--swiper-pagination-bullet-size": "0.4375rem",
-          }}
-          className="swiper-pagination w-full flex gap-3.5 pt-[2.87rem] items-center justify-center"
-        ></div>
+        <div className="swiper-pagination w-full flex gap-3.5 pt-[2.87rem] items-center justify-center"></div>
         <div className="swiper-navigation w-full z-10 hidden 2xl:flex absolute top-1/2 -translate-y-1/2 items-center justify-between">
           <div
             className="button-prev flex justify-center items-center w-[4rem] aspect-square cursor-pointer relative -translate-x-[6.81rem]"
-            onClick={() => swiper.slidePrev()}
+            onClick={() => {
+              if (swiper) swiper.slidePrev();
+            }}
           >
             <Image src={arrow} alt="arrow-left" className="w-full" />
           </div>
           <div
             className="button-prev flex justify-center items-center w-[4rem] aspect-square cursor-pointer translate-x-[6.81rem]"
-            onClick={() => swiper.slideNext()}
+            onClick={() => {
+              if (swiper) swiper.slideNext();
+            }}
           >
             <Image
               src={arrow}

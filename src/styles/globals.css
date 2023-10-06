@@ -14,6 +14,8 @@
       Helvetica Neue,
       system-ui,
       sans-serif;
+    --swiper-pagination-color: #fff;
+    --swiper-pagination-bullet-size: 0.4375rem;
   }
   select {
     appearance: none;

@@ -26,22 +26,31 @@ import qaImage from "@src/assets/images/qa-image.svg";
 import Image from "next/image";
 import classNames from "classnames";
 import {
-  getCustomer,
-  getFeature,
-  getIndustry,
-  getQA,
-  getStrength,
-} from "@src/backendAPI/home";
+  customer,
+  feature,
+  industry,
+  qa,
+  strength,
+} from "@src/services/feature/homepage";
+import { useAppSelector } from "@src/hooks";
 
 interface Props {
-  strength: IStrength[];
-  industry: string[];
-  feature: IFeature[];
-  customer: ICustomer[];
-  qa: IQA[];
+  strengthList: IStrength[];
+  industryList: string[];
+  featureList: IFeature[];
+  customerList: ICustomer[];
+  qaList: IQA[];
 }
-const Home: FC<Props> = ({ strength, industry, feature, customer, qa }) => {
+const Home: FC<Props> = ({
+  customerList,
+  featureList,
+  industryList,
+  qaList,
+  strengthList,
+}) => {
   const FEATURE_IMAGE: string[] = [featureImage1, featureImage2];
+  const count = useAppSelector((state) => state.auth.token);
+  console.log(count);
 
   return (
     <>
@@ -77,7 +86,7 @@ const Home: FC<Props> = ({ strength, industry, feature, customer, qa }) => {
             Phần mềm quản lý bán hàng Wifosell
           </Title>
           <div className="grid xl:grid-cols-3 grid-cols-1 gap-[1.94rem] h-full mb-[10rem] xl:px-[10.38rem]">
-            {strength.map((value, index) => (
+            {strengthList.map((value, index) => (
               <ProsItem
                 className="mx-auto"
                 key={index}
@@ -99,7 +108,7 @@ const Home: FC<Props> = ({ strength, industry, feature, customer, qa }) => {
             Wifosell là giải pháp tối ưu cho từng ngành hàng
           </Title>
           <div className="grid xl:grid-cols-5 grid-cols-2 gap-[1.94rem] w-full h-full xl:px-[10.38rem]">
-            {industry.map((value, index) => (
+            {industryList.map((value, index) => (
               <IndustrialItem
                 className="mx-auto"
                 key={index}
@@ -132,7 +141,7 @@ const Home: FC<Props> = ({ strength, industry, feature, customer, qa }) => {
           >
             Phần mềm quản lý bán hàng online hiệu quả
           </Title>
-          {feature.map((value, index) => (
+          {featureList.map((value, index) => (
             <div
               key={index}
               className={classNames(
@@ -194,7 +203,7 @@ const Home: FC<Props> = ({ strength, industry, feature, customer, qa }) => {
             Khách hàng của Wifosell
           </Title>
           <Slider
-            customerItem={customer.map((value, index) => ({
+            customerItem={customerList.map((value, index) => ({
               ...value,
               customerLogo: CUSTOMER_IMAGES[index],
             }))}
@@ -210,7 +219,7 @@ const Home: FC<Props> = ({ strength, industry, feature, customer, qa }) => {
         <div className="grid xl:grid-cols-2 grid-cols-1 gap-[4.75rem] container xl:px-[10.38rem] items-center">
           <Image src={qaImage} alt="Question & Answer" />
           <div className="flex flex-col gap-[0.75rem]">
-            {qa.map((value, index) => (
+            {qaList.map((value, index) => (
               <QAItem key={index} qAItem={value} />
             ))}
           </div>
@@ -233,22 +242,41 @@ const Home: FC<Props> = ({ strength, industry, feature, customer, qa }) => {
 };
 
 export async function getStaticProps() {
-  // Call an external API endpoint to get posts
-  const [strength, industry, feature, customer, qa] = await Promise.all([
-    getStrength(),
-    getIndustry(),
-    getFeature(),
-    getCustomer(),
-    getQA(),
+  const data = await Promise.allSettled([
+    strength.list(),
+    industry.list(),
+    feature.list(),
+    customer.list(),
+    qa.list(),
   ]);
-  return {
-    props: {
-      strength: strength.data,
-      industry: industry.data,
-      feature: feature.data,
-      customer: customer.data,
-      qa: qa.data,
-    },
-  };
+
+  let hasErrors = false;
+  const results = data.map((result) => {
+    if (result.status === "fulfilled") {
+      return result.value;
+    } else {
+      hasErrors = true;
+      console.log(result.reason);
+    }
+  });
+
+  if (hasErrors) {
+    return {
+      notFound: true, // 404 status code
+      // or
+      // serverError: true, // 500 status code
+    };
+  } else {
+    // form has errors, do not submit it
+    return {
+      props: {
+        strengthList: results[0],
+        industryList: results[1],
+        featureList: results[2],
+        customerList: results[3],
+        qaList: results[4],
+      },
+    };
+  }
 }
 export default Home;
